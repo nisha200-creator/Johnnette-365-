@@ -1,0 +1,485 @@
+{% extends 'base.html' %} 
+{% load static %} 
+{% block title %}Articles{% endblock title %} 
+
+
+{% block meta_tags %} 
+{% endblock meta_tags %}
+
+
+
+
+{% block page_css %}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+
+
+    <style>
+
+
+
+
+
+
+
+
+body, html {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    background-color: #6c757d;
+    font-family: Arial, sans-serif;
+}
+
+.magazine-container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 20px;
+    /* margin-top: 10%; */
+}
+
+.heading {
+    text-align: center;
+    color: white;
+    margin-top: 5%;
+}
+
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    /* gap: 20px; */
+}
+/* Article */
+.col-md-8 {
+    flex: 2;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: space-between;
+    min-width: 60%;
+    background-color: #333333;
+    border-radius: 8px;
+    
+}
+
+
+.inner-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    
+
+}
+
+/* Article*/
+.article-item {
+    position: relative;
+    width: 100%;
+    max-width: 100%;
+    
+}
+
+.image-container img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    object-fit: cover;
+    margin-top: 5%;
+}
+
+/* Overlay */
+.overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 10px;
+    background: rgba(0, 0, 0, 0.6);
+    color: white;
+    text-decoration: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.arrow-btn {
+    background: rgba(255, 255, 255, 0.2);
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+/* Sidebar */
+.col-md-4 {
+    flex: 1;
+    min-width: 35%;
+}
+
+.MAGAZINE-sidebar {
+    background: #333;
+    color: white;
+    padding: 15px;
+    border-radius: 10px;
+}
+
+/* Advertisement */
+.ad-container {
+    text-align: center;
+}
+
+.video-wrapper {
+    position: relative;
+    max-width: 100%;
+    overflow: hidden;
+}
+
+.ad-video {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+.play-pause-btn {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+
+.MAGAZINE-small-sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.MAGAZINE-small {
+    background: #444;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.MAGAZINE-img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+/* Subscription*/
+.section-title {
+    text-align: center;
+    margin-top: 20px;
+    color: white;
+}
+
+.newsletter-container {
+    background: #222;
+    padding: 15px;
+    border-radius: 10px;
+    text-align: center;
+    color: white;
+}
+
+.input-group {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.input-group input {
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    width: 70%;
+}
+
+.input-group button {
+    padding: 10px;
+    background: #f04e30;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+
+@media (max-width: 1024px) {
+    .row {
+        flex-direction: column;
+    }
+
+    .col-md-8, .col-md-4 {
+        min-width: 100%;
+    }
+
+    .article-item {
+        width: 100%;
+    }
+
+    .overlay {
+        font-size: 14px;
+        padding: 8px;
+    }
+
+    .newsletter-container {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 768px) {
+    .heading h1 {
+        font-size: 24px;
+    }
+
+    .ad-video {
+        height: auto;
+    }
+
+    .overlay {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .arrow-btn {
+        font-size: 12px;
+    }
+
+    .input-group input {
+        width: 60%;
+    }
+}
+
+@media (max-width: 480px) {
+    .heading h1 {
+        font-size: 20px;
+    }
+
+    .overlay {
+        font-size: 12px;
+    }
+
+    .input-group {
+        flex-direction: column;
+    }
+
+    .input-group input, .input-group button {
+        width: 100%;
+    }
+}
+    </style>
+        
+        
+
+{% endblock page_css %}
+
+
+{% block content %}
+
+
+
+
+
+
+
+<div class="heading">
+    <h1>Articles</h1>
+</div>
+<div class="magazine-container">
+    <div class="custom-container">
+        <div class="row">
+           <div class="col-md-8">
+                <div class="inner-container">
+                    <div class="articles">
+                        <div class="article-item">
+                            <div class="image-container">
+                                <img src="{% static '/img/AIStartups.jpg' %}" alt="">
+                            </div>
+                            <a class="overlay" href="#">
+                                <small>TOP 10 AI STARTUPS OF INDIA 2025</small>
+                                <span class="arrow-btn"> Read More</span>
+                            </a>
+                        </div>
+                        <div class="article-item">
+                            <div class="image-container">
+                                <img src="{% static '/img/coding.jpg' %}" alt="">
+                            </div>
+                            <a class="overlay" href="#">
+                                <small>BEHIND THE SCENES : HOW CODING FUELS DRONES POWER</small>
+                                <span class="arrow-btn"> Read More</span>
+                            </a>
+                        </div>
+                        <div class="article-item">
+                            <div class="image-container">
+                                <img src="{% static '/img/Drone.jpg' %}" alt="">
+                            </div>
+                            <a class="overlay" href="#">
+                                <small>Drones with Artificial Intelligence: Navigating Tech’s New Frontier</small>
+                                <span class="arrow-btn"> Read More</span>
+                            </a>
+                        </div>
+                        <div class="article-item">
+                            <div class="image-container">
+                                <img src="{% static '/img/VideoSurveillance.jpg' %}" alt="">
+                            </div>
+                            <a class="overlay" href="#">
+                                <small>MAKING USE OF VIDEO SURVEILLANCE TECHNOLOGY</small>
+                                <span class="arrow-btn"> Read More</span>
+                            </a>
+                        </div>
+                        <div class="article-item">
+                            <div class="image-container">
+                                <img src="{% static '/img/PARADIGM.jpg' %}" alt="">
+                            </div>
+                            <a class="overlay" href="">
+                                <small>PARADIGM SHIFT IN MARITIME WARFARE</small>
+                                <span class="arrow-btn"> Read More</span>
+                            </a>
+                        </div>
+                        <div class="article-item">
+                            <div class="image-container">
+                                <img src="{% static '/img/unicorn.jpg' %}" alt="">
+                            </div>
+                            <a class="overlay" href="#">
+                                <small>HOW TO BECOME THE NEXT TECH UNICORN</small>
+                                <span class="arrow-btn"> Read More</span>
+                            </a>
+                        </div>
+                        <div class="article-item">
+                            <div class="image-container">
+                                <img src="{% static '/img/ai.jpg' %}" alt="">
+                            </div>
+                            <a class="overlay" href="#">
+                                <small>THE DOUBLE-EDGED SWORD OF ARTIFICIAL INTELLIGENCE</small>
+                                <span class="arrow-btn"> Read More</span>
+                            </a>
+                        </div>
+                        <div class="article-item">
+                            <div class="image-container">
+                                <img src="{% static '/img/autopilot.png' %}" alt="">
+                            </div>
+                            <a class="overlay" href="#">
+                                <small>MUSIC ON AUTOPILOT: IS AI PUSHING ARTISTS OUT OF THE PICTURE?</small>
+                                <span class="arrow-btn"> Read More</span>
+                            </a>
+                        </div>
+                        <div class="article-item">
+                            <div class="image-container">
+                                <img src="{% static '/img/Aviation.jpg' %}" alt="">
+                            </div>
+                            <a class="overlay" href="#">
+                                <small>Cyber Threats to Aviation, Space and Need for Resilience</small>
+                                <span class="arrow-btn"> Read More</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="MAGAZINE-sidebar">
+
+                    <div class="ad-container">
+                        <div class="section-title">
+                            <h4>Advertisement</h4>
+                        </div>
+                    
+                        <div class="ad-content">
+                            <div class="video-wrapper">
+                                <video class="ad-video" autoplay muted loop>
+                                    <source src="{% static '/videos/video4.mp4' %}" type="video/mp4">
+                                    Your browser does not support the video tag.
+                                </video>
+                                <button class="play-pause-btn">⏸</button>
+                            </div>
+                        </div>
+                    
+                        <div class="ad-content">
+                            <div class="video-wrapper">
+                                <video class="ad-video" autoplay muted loop>
+                                    <source src="{% static '/videos/video3.mp4' %}" type="video/mp4">
+                                    Your browser does not support the video tag.
+                                </video>
+                                <button class="play-pause-btn">⏸</button>
+                            </div>
+                        </div>
+                    </div>
+                        <div class="MAGAZINE-small-sidebar"> 
+                            <div class="MAGAZINE-small">
+                                <img src="{% static '/img/unicorn.jpg' %}" class="MAGAZINE-img" alt="">
+                                <h3>Featured Article</h3>
+                                <a href="#" class="MAGAZINE-subtitle">4 Lorem ipsum dolor sit amet consectetur adipisicing elit.......</a>
+                            </div>
+                            <div class="MAGAZINE-small">
+                                <img src="{% static '/img/PARADIGM.jpg' %}" class="MAGAZINE-img" alt="">
+                                <h3>Featured Article</h3>
+                                <a href="#" class="MAGAZINE-subtitle"> HOW TO BECOME THE NEXT TECHUNICORN</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="section-title">
+                    <h4>Subscribe</h4>
+                    <div class="newsletter-container">
+                        <p>Aliqu justo et labore at eirmod justo sea erat diam dolor diam vero kasd</p>
+                        <div class="input-group">
+                            <input type="text" placeholder="Your Email">
+                            <button>Subscribe</button>
+                        </div>
+                        <small>Lorem ipsum dolor sit amet elit</small>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+{% endblock content %} 
+
+
+
+
+
+
+
+
+
+
+
+{% block page_js %}
+
+
+<script>
+    document.querySelectorAll(".video-wrapper").forEach((wrapper) => {
+        let video = wrapper.querySelector(".ad-video");
+        let button = wrapper.querySelector(".play-pause-btn");
+        let icon = button.querySelector("i");
+
+        button.addEventListener("click", function() {
+            if (video.paused) {
+                video.play();
+                icon.classList.replace("fa-play", "fa-pause"); 
+            } else {
+                video.pause();
+                icon.classList.replace("fa-pause", "fa-play"); 
+            }
+        });
+    });
+</script>
+
+{% endblock page_js %}
