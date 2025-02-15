@@ -11,3 +11,5 @@ def article(request):
     return render(request, 'articles.html')
 def singlepage(request):
     return render(request,'singlepage.html')
+def about(request):
+    return render (request,'about.html')
