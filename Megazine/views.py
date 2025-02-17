@@ -7,9 +7,11 @@ from django.shortcuts import render
 def home(request):
     return render(request, "home.html")
 
-def article(request):
+def Articles(request):
     return render(request, 'articles.html')
+
 def singlepage(request):
     return render(request,'singlepage.html')
+
 def about(request):
     return render (request,'about.html')
