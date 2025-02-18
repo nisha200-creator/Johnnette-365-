@@ -15,3 +15,6 @@ def singlepage(request):
 
 def about(request):
     return render (request,'about.html')
+
+def page(request):
+    return render (request,'page.html')
