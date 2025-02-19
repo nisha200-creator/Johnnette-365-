@@ -27,6 +27,7 @@
     h4 {
         font-weight: bolder;
         font-size: 1rem;
+        
     }
 * {
     margin: 0;
@@ -96,7 +97,7 @@ h1 {
 
 a {
     text-decoration: none;
-    color: #007BFF;
+    color:  #ff5000;
     transition: color 0.3s;
 }
 
@@ -127,7 +128,7 @@ a:hover {
 
 .icons i {
     font-size: 1.2rem;
-    color: #007BFF;
+    color: black;
     transition: color 0.3s;
     cursor: pointer;
 }
@@ -235,7 +236,7 @@ p {
 }
 
 .STORIES .card-body a {
-    color: black;
+    color:  black;
     font-size: 0.70rem;
     font-weight: bold;
     transition: color 0.3s ease;
@@ -310,6 +311,7 @@ p {
     margin-bottom: 15px;
     font-size: 1.5rem;
     color: #333;
+    
 }
 
 .newsletter img {
@@ -344,16 +346,17 @@ p {
     padding: 5px 5px;
     font-size: 1rem;
     color: #fff;
-    background-color: #dc0506;
+    background: linear-gradient(135deg, rgba(252, 185, 0, 1) 0%, rgba(255, 105, 0, 1) 100%);
+    font-weight: bold;
     border: none;
     border-radius: 4px;
     cursor: pointer;
     transition: background-color 0.3s;
 }
 
-.newsletter button:hover {
+{% comment %} .newsletter button:hover {
     background-color: #0056b3;
-}
+} {% endcomment %}
 
 .newsletter small {
     display: block;
@@ -454,6 +457,7 @@ p {
     font-size: 1.1rem;
     margin-bottom: 5px;
     font-weight: bold;
+    
 }
 
 .news-card-body .category {
@@ -787,7 +791,7 @@ p {
 
                     {% comment %} wraped card {% endcomment %}
                     <div>
-                        <h4>STORIES YOU MAY LIKE</h4>
+                        <h4 style="color :  #ff5000;">STORIES YOU MAY LIKE</h4>
                         <div class="STORIES">  
                             <div class="card" style="width: 13rem;">
                                 <img src="{% static '/img/Drone2.jpg' %}" class="card-img-top" alt="...">
@@ -903,7 +907,7 @@ p {
 
                     <div class="advertisement-section" style="box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); padding: 15px;">
                         <div class="section-title">
-                            <h4>Advertisement</h4>
+                            <h4 style="color :  #ff5000;">Advertisement</h4>
                         </div>
                         <div class="advertisement-content">
                             <a href=""><img src="{% static '/img/PARADIGM.jpg' %}" alt="Advertisement"></a>
@@ -913,7 +917,7 @@ p {
 
 
                     <div class="stories-section">
-                        <h4>Top STORIES </h4>
+                        <h4 style="color :  #ff5000;"> Top STORIES </h4>
                         <div class="right-stories" style="box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">  
                             <div class="right-card">
                                 <img src="{% static '/img/Drone2.jpg' %}" alt="Story Image">
@@ -946,7 +950,7 @@ p {
 
 
                     <div class="Popular-articles" style="box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
-                        <h4>POPULAR POST </h4>
+                        <h4 style="color :  #ff5000;">POPULAR POST </h4>
                         <div class="article-item ">
                             <div class="image-container" style="box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
                                 <img src="{% static '/img/AIStartups.jpg' %}" alt="">

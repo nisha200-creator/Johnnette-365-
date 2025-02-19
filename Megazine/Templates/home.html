@@ -13,10 +13,10 @@
 
 
         body{
-            background-color: #444;
+            background-color: white;
 
         }
-    .swiper {
+    {% comment %} .swiper {
         width: 100%;
         height: 100%;
     }
@@ -91,7 +91,7 @@
             cursor: pointer;
         }
     
-        /* ============== arrow buttons ============= */
+       
         .arrow-button {
             font-size: 40px;
             font-weight: bold;
@@ -106,7 +106,7 @@
             gap: 10px;
         }
 
-        /* ========== Left Button ======== */
+      
         .left-arrows span {
             display: inline-block;
             opacity: 0;
@@ -125,7 +125,6 @@
         } 
 
 
-        /* ========== Right Button ======== */
         .right-arrows span {
             display: inline-block;
             opacity: 0;
@@ -141,9 +140,181 @@
             0% { opacity: 0; transform: translateX(-10px); }
             50% { opacity: 1; transform: translateX(0); }
             100% { opacity: 0; transform: translateX(10px); }
+        } {% endcomment %}
+
+    .banner-container {
+        position: relative;
+        width: 100%;
+        height: 100vh;
+        overflow: hidden;
+    }
+        
+    .banner-container video {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+         min-width: 100%;
+        min-height: 100%;
+        width: auto;
+        height: auto;
+        z-index: -1;
+        object-fit: cover;
+    }
+        
+    .banner-text {
+        position: absolute;
+        top: 50%;
+        left: 10%;
+        transform: translateY(-50%);
+        text-align: start;
+        color: white;
+        font-family: Arial, sans-serif;
+        padding: 20px;
+        background-color: rgba(0, 0, 0, 0.6);
+        border-radius: 10px;
+    }
+        
+    .banner-text h1 {
+        font-size: 2.5rem;
+        margin: 0;
+    }
+        
+    .banner-text p {
+        font-size: 1.2rem;
+    }
+        
+    @media (max-width: 768px) {
+        .banner-text h1 {
+            font-size: 1.8rem;
+        }
+        
+        .banner-text p {
+             font-size: 1rem;
+        }
+    }
+        
+    @media (max-width: 480px) {
+        .banner-text h1 {
+            font-size: 1.5rem;
+        }
+        
+        .banner-text p {
+            font-size: 0.9rem;
+        }
+    }
+
+    {% comment %} slide video {% endcomment %}
+        
+    {% comment %} .ad-thumbnail-video-container {
+        padding: 100px 0;
+    }
+         {% endcomment %}
+         .ad-thumbnail-video-container {
+            
+            margin-top: 1%;
+            padding: 5% 5%;
+    
+            
         }
 
+        .ad-thumbnail {
+            display: flex;
+            gap: 20px;
+            align-items: center;
 
+            
+        }
+
+        .arrow-button {
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: white;
+        }
+
+        .swiper {
+            width: 100%;
+            overflow: hidden;
+        }
+
+        .swiper-slide {
+            display: flex;
+            justify-content: center;
+        }
+
+        .video-container {
+            position: relative;
+            width: 100%;
+            cursor: pointer;
+        }
+
+        .video-container img {
+            border-radius: 10px;
+            width: 100%;
+        }
+
+        .play-button {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 2rem;
+            color: white;
+            background: rgba(0, 0, 0, 0.5);
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+        }
+
+        .fullscreen-video {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            display: none;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .fullscreen-video video {
+            max-width: 80%;
+            max-height: 80%;
+        }
+
+        .close-button {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 2rem;
+            color: white;
+            cursor: pointer;
+        }
+
+        @media (max-width: 768px) {
+            .ad-thumbnail {
+                flex-direction: column;
+            }
+
+            .swiper-slide {
+                width: 80%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .play-button {
+                font-size: 1.5rem;
+                width: 40px;
+                height: 40px;
+            }
+
+            .close-button {
+                font-size: 1.5rem;
+            }
+        }
 
 
 /* articles */
@@ -221,7 +392,8 @@
 }
 
 .arrow-btn {
-    background: rgba(255, 255, 255, 0.2);
+    background: linear-gradient(135deg, rgba(252, 185, 0, 1) 0%, rgba(255, 105, 0, 1) 100%);
+    font-weight: bold;
     padding: 5px 10px;
     border-radius: 5px;
 }
@@ -233,7 +405,7 @@
 }
 
 .MAGAZINE-sidebar {
-    background: #333;
+    background: white;
     color: white;
     padding: 15px;
     border-radius: 10px;
@@ -276,26 +448,25 @@
 }
 
 .MAGAZINE-small {
-    background: #444;
+    background: white;
     padding: 10px;
     border-radius: 10px;
     cursor: pointer;
 }
 
 
-
-.MAGAZINE-small  h5 {
-    color: white;
-    text-decoration: none;
-    background-image: radial-gradient(ellipse at right, #6b7280, #818cf8, #38bdf8);
+{% comment %} background-image: radial-gradient(ellipse at right, #6b7280, #818cf8, #38bdf8);
     background-clip: text;
     -webkit-background-clip: text;
-    color: transparent;
+    color: transparent; {% endcomment %}
+.MAGAZINE-small  h6 {
+    color:#f04e30 ;
+    text-decoration: none;
     margin-top: 5%
     
 }
-.MAGAZINE-small  h5:hover {
-    color:#007bff;  
+.MAGAZINE-small  h6:hover {
+    color:black;  
 }
 
 
@@ -310,16 +481,27 @@
 }
 
 
-
+{% comment %} background-image: radial-gradient(ellipse at right, #6b7280, #818cf8, #38bdf8);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent; {% endcomment %}
 
 /* Subscription*/
 .section-title {
     text-align: center;
     margin-top: 20px;
-    background-image: linear-gradient(to bottom left, #e879f9, #fefce8, #52525b);
-   background-clip: text;
-   -webkit-background-clip: text;
-    color: transparent;
+    color:#ff5000;
+    margin-top: 5%;
+    font-weight: bold;
+    
+}
+
+
+.section-title img {
+    width: 5%;
+    max-width: 200px;
+    height: auto;
+    margin-bottom: 15px;
 }
 {% comment %} wraped card {% endcomment %}
 
@@ -343,7 +525,7 @@
 
 .my-4 {
    
-    font-size: 3.5rem;
+    font-size: 2.5rem;
     display: flex;
     justify-content: center;
     background: linear-gradient(to top left, #86efac, #374151, #6366f1);
@@ -375,15 +557,23 @@
 }
 
 /* Card Text */
-.card-text {
-    font-size: 1rem;
-    font-weight: bold;
-    background-image: linear-gradient(to right, #d97706, #292524, #ecfeff);
+
+
+{% comment %} background-image: radial-gradient(ellipse at right, #6b7280, #818cf8, #38bdf8);
     background-clip: text;
     -webkit-background-clip: text;
-    color: transparent;
+    color: transparent; {% endcomment %}
+.card-text {
+    font-size: 0.80rem;
+    font-weight: bold;
+    color:#f04e30 ;
+    margin-top: 5%
+}
+
+.card-text:hover {
     
-    margin-bottom: 0; 
+    color:black ;
+    
 }
 
 /* Responsive Styles */
@@ -430,7 +620,8 @@
 
 .input-group button {
     padding: 10px;
-    background: #f04e30;
+    background: linear-gradient(135deg, rgba(252, 185, 0, 1) 0%, rgba(255, 105, 0, 1) 100%);
+    font-weight: bold;
     color: white;
     border: none;
     cursor: pointer;
@@ -530,12 +721,13 @@
     margin-bottom: 20px;
 }
 
-
-.features-content p {
-    background-image: radial-gradient(ellipse at top, #f5f5f5, #fed7aa, #f7fee7);
+{% comment %} background-image: radial-gradient(ellipse at top, #f5f5f5, #fed7aa, #f7fee7);
     background-clip: text;
     -webkit-background-clip: text;
-    color: transparent;
+    color: transparent; {% endcomment %}
+.features-content p {
+    color:#f04e30;
+    
     font-weight: bold;
 
 
@@ -561,7 +753,7 @@
 
 .img-container img {
     width: 100%;
-    height: 100%;
+   
     object-fit: cover;
    
 }
@@ -600,13 +792,11 @@
 
 
 .title {
-    font-size: 18px;
+    font-size: 0.80rem;
     text-decoration: none;
     margin-bottom: 10px;
-    background-image: radial-gradient(ellipse at right, #6b7280, #818cf8, #38bdf8);
-    background-clip: text;
-    -webkit-background-clip: text;
-    color: transparent;
+    color: black;
+    
 }
 
 .title:hover {
@@ -652,32 +842,66 @@
 }
 
 .banner-container video {
-    width: 100%;
-    height: 100%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: -1;
     object-fit: cover;
 }
 
 .banner-text {
     position: absolute;
-    left: 50px;
-    bottom: 150px;
-    color: white;
-    max-width: 800px;
+    top: 50%;
+    left: 10%;
+    transform: translateY(-50%);
+    text-align: start;
+    font-family: Arial, sans-serif;
+    padding: 20px;
     background-image: linear-gradient(to bottom, #f0fdf4, #4338ca, #d97706);
     background-clip: text;
     -webkit-background-clip: text;
-    color: transparent;
-} 
+    color: transparent; 
+    border-radius: 10px;
+}
 
 .banner-text h1 {
-    font-size: 60px;
-    font-weight: bold;
+    font-size: 3.5rem;
+    margin: 0;
+}
+
+.banner-text p {
+    font-size: 1.2rem;
+}
+
+@media (max-width: 768px) {
+    .banner-text h1 {
+        font-size: 1.8rem;
+    }
+
+    .banner-text p {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .banner-text h1 {
+        font-size: 1.5rem;
+    }
+
+    .banner-text p {
+        font-size: 0.9rem;
+    }
 }
 
 
 
 
-
+    
 
 
 
@@ -798,23 +1022,25 @@
 
 
 
-
+{% comment %} banner {% endcomment %}
 {% block content %}
 <div class="banner-container">
     <video autoplay loop muted>
         <source src="{% static '/videos/banner.mp4' %}" type="video/mp4">
+        Your browser does not support the video tag.
     </video>
     <div class="banner-text">
         <h1>INTRODUCING Future Technologies Magazine</h1>
         <p>Volume 1 | Issue 1</p>
-        {% comment %} <button class="btn btn-primary">Read More</button> {% endcomment %}
     </div>
 </div>
 
-<div class="ad-thumbnail-video-container" style="padding: 100px 0;">
+
+{% comment %} siide video {% endcomment %}
+<div class="ad-thumbnail-video-container" >
     <div class="container">
     </div>
-    <div class="ad-thumbnail" style="display: flex; padding: 0 10px; gap: 20px; align-items: center; margin-top: 100px;">
+    <div class="ad-thumbnail" style="display: flex;  gap: 20px; align-items: center;">
         <div class="btn-l">
             <button class="arrow-button">
                 <span class="left-arrows" style="display: flex;">
@@ -851,6 +1077,30 @@
                     </div>
                 </div>
                 <div class="swiper-slide">
+                    <div class="ad-3">
+                        <div class="video-container" onclick="openVideo3()" style="width: 100%;">
+                            <img src="{% static '/img/ad3.png' %}" style="border-radius: 10px;" alt="ad Thumbnail">
+                            <button class="play-button">▶</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="ad-3">
+                        <div class="video-container" onclick="openVideo3()" style="width: 100%;">
+                            <img src="{% static '/img/ad3.png' %}" style="border-radius: 10px;" alt="ad Thumbnail">
+                            <button class="play-button">▶</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="ad-3">
+                        <div class="video-container" onclick="openVideo3()" style="width: 100%;">
+                            <img src="{% static '/img/ad3.png' %}" style="border-radius: 10px;" alt="ad Thumbnail">
+                            <button class="play-button">▶</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide">
                     <div class="ad-4">
                         <div class="video-container" onclick="openVideo4()" style="width: 100%;">
                             <img src="{% static '/img/ad4.png' %}" style="border-radius: 10px;" alt="ad Thumbnail">
@@ -860,6 +1110,8 @@
                 </div>
             </div>
         </div>
+
+
         <div class="btn-r">
             <button class="arrow-button">
                 <span class="right-arrows" style="display: flex;">
@@ -907,15 +1159,15 @@
 </div>
 
 
-
-<div class="magazine-container">
-    <h4 class="my-4 slide-in-bck-left-normal">Popular Articles</h4>
+{% comment %} Popular Articles {% endcomment %}
+<div class="magazine-container" style="box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
+    <h4 class="my-4 slide-in-bck-left-normal" style="box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); padding: 5px;" >Popular Articles</h4>
     <div class="custom-container">
         <div class="row">
             <div class="col-md-8">
                 <div class="inner-container">
                     <div class="articles">
-                        <div class="article-item bounce-in-left-normal-hidden">
+                        <div class="article-item bounce-in-left-normal-hidden" >
                             <div class="image-container">
                                 <img src="{% static '/img/AIStartups.jpg' %}" alt="">
                             </div>
@@ -944,20 +1196,26 @@
                                 <span class="arrow-btn"> Read More</span>
                             </a>
                         </div>
+                        <hr>
+
+
+
+                        
                         
             
 
 
 
+                                    {% comment %} Recent Articles {% endcomment %}
 
 
-
-                        <h4 class="my-4">Recent Articles</h4>
+                        <h4 class="my-4" style="box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">Recent Articles</h4>
                         <div class="card-wrapper">
                             <div class="card slide-in-top-normal">
                                 <img src="{% static '/img/artificialintelligence.jpg' %}" class="card-img" alt="...">
                                 <div class="card-body">
                                     <p class="card-text">THE DOUBLE-EDGED SWORD OF ARTIFICIAL INTELLIGENCE</p>
+                                    <small class="date"><i class="fas fa-calendar-alt"></i> December 9, 2024</small>
                                     <div class="col-12">
                                         <a href="#" class="view-more-btn">Read More</a>
                                     </div>
@@ -967,6 +1225,7 @@
                                 <img src="{% static '/img/coding.jpg' %}" class="card-img" alt="...">
                                 <div class="card-body">
                                     <p class="card-text">BEHIND THE SCENES : HOW CODING FUELS DRONES POWER</p>
+                                    <small class="date"><i class="fas fa-calendar-alt"></i> December 9, 2024</small>
                                     <div class="col-12">
                                         <a href="#" class="view-more-btn">Read More</a>
                                     </div>
@@ -976,6 +1235,7 @@
                                 <img src="{% static '/img/Aviation.jpg' %}" class="card-img" alt="...">
                                 <div class="card-body">
                                     <p class="card-text">CYBER THREATS TO AVIATION, SPACE AND NEED FOR RESILIENCE</p>
+                                    <small class="date"><i class="fas fa-calendar-alt"></i> December 9, 2024</small>
                                     <div class="col-12">
                                         <a href="#" class="view-more-btn">Read More</a>
                                     </div>
@@ -985,6 +1245,7 @@
                                 <img src="{% static '/img/VideoSurveillance.jpg' %}" class="card-img" alt="...">
                                 <div class="card-body">
                                     <p class="card-text">MAKING USE OF VIDEO SURVEILLANCE TECHNOLOGY</p>
+                                    <small class="date"><i class="fas fa-calendar-alt"></i> December 9, 2024</small>
                                     <div class="col-12">
                                         <a href="#" class="view-more-btn">Read More</a>
                                     </div>
@@ -996,17 +1257,17 @@
             </div>
             
 
-{% comment %} wraped card {% endcomment %}
+                                     {% comment %} wraped card {% endcomment %}
 
             <div class="col-md-4">
                 <div class="MAGAZINE-sidebar">
 
-                    <div class="ad-container">
+                    <div class="ad-container" style="box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); padding: 15px;">
                         <div class="section-title">
                             <h4>Advertisement</h4>
                         </div>
                     
-                        <div class="ad-content">
+                        <div class="ad-content" style="box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); padding: 15px;">
                             <div class="video-wrapper">
                                 <video class="ad-video" autoplay muted loop>
                                     <source src="{% static '/videos/video4.mp4' %}" type="video/mp4">
@@ -1016,7 +1277,7 @@
                             </div>
                         </div>
                     
-                        <div class="ad-content">
+                        <div class="ad-content" style="box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); padding: 15px;">
                             <div class="video-wrapper">
                                 <video class="ad-video" autoplay muted loop>
                                     <source src="{% static '/videos/video3.mp4' %}" type="video/mp4">
@@ -1025,32 +1286,39 @@
                                 <button class="play-pause-btn">⏸</button>
                             </div>
                         </div>
-                    </div>
-                        <div class="MAGAZINE-small-sidebar"> 
-                            <div class="MAGAZINE-small">
+
+                       
+                     </div>
+                        <div class="MAGAZINE-small-sidebar " style="box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); padding: 15px;"> 
+                            <div class="MAGAZINE-small" style="box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); padding: 15px;">
                                 <img src="{% static '/img/unicorn.jpg' %}" class="MAGAZINE-img" alt="">
-                                <h5>HOW TO BECOME THE NEXT TECH UNICORN</h5>
+                                <h6>HOW TO BECOME THE NEXT TECH UNICORN</h6>
+                                <small class="date"><i class="fas fa-calendar-alt"></i> December 9, 2024</small>
                                 {% comment %} <a href="#" class="MAGAZINE-subtitle">Becoming the next unicorn requires more than just a great idea...</a> {% endcomment %}
                             </div>
-                            <div class="MAGAZINE-small">
+                            <div class="MAGAZINE-small" style="box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); padding: 15px;">
                                 <img src="{% static '/img/PARADIGM.jpg' %}" class="MAGAZINE-img" alt="">
-                                <h5>PARADIGM SHIFT IN MARITIME WARFARE</h5>
+                                <h6>PARADIGM SHIFT IN MARITIME WARFARE</h6>
+                                <small class="date"><i class="fas fa-calendar-alt"></i> December 9, 2024</small>
                                 {% comment %} <a href="#" class="MAGAZINE-subtitle"> In the present-day scenario, Unmanned Aerial Systems (UAS)...
 
                                 </a> {% endcomment %}
                             </div>
-                            <div class="MAGAZINE-small">
+                            <div class="MAGAZINE-small"style="box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); padding: 15px;" >
                                 <img src="{% static '/img/Drone2.jpg' %}" class="MAGAZINE-img" alt="">
-                                <h5>Drones with Artificial Intelligence:Navigating Tech’s New Frontie</h5>
+                                <h6>Drones with Artificial Intelligence:Navigating Tech’s New Frontie</h6>
+                                <small class="date"><i class="fas fa-calendar-alt"></i> December 9, 2024</small>
                                 {% comment %} <a href="#" class="MAGAZINE-subtitle"> 
                                     Drones with Artificial Intelligence:Navigating Tech’s New Frontie
                                     AI-powered drones...</a> {% endcomment %}
                             </div>
 
-                            <h4 class="my-4">Popular News</h4>
+                            
+
+                            <h4 class="my-4" style="box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); ">Popular News</h4>
                             <div class="row">
-                                <div class="col">
-                                    <div class="features-item">
+                                <div class="col"style="box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); padding: 15px;">
+                                    <div class="features-item" style="box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); padding: 15px;">
                                         <div class="img-container">
                                             <img src="{% static '/img/ai.jpg' %}" alt="Sports">
                 
@@ -1062,7 +1330,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                 <div class="col">
+                                 <div class="col" style="box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); padding: 15px;">
                                     <div class="features-item">
                                          <div class="img-container">
                                             <img src="{% static '/img/Drone.jpg' %}" alt="Technology">
@@ -1079,10 +1347,21 @@
                                     <a href="#" class="view-more-btn">View More</a>
                                 </div>
                             </div>
+
+
+
+                    
+
+
+
+
+                            
                         </div>
                     </div>              
                 </div>
-                <div class="section-title">
+                
+                <div class="section-title" style="box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); padding: 15px;">
+                    <img src="{% static '/img/mail.png' %}" alt="Newsletter Image">
                     <h4>Subscribe</h4>
                     <div class="newsletter-container">
                         <p>Aliqu justo et labore at eirmod justo sea erat diam dolor diam vero kasd</p>
@@ -1139,6 +1418,12 @@
         document.getElementById("fullscreenVideo4").style.display = "none";
         document.getElementById("videoPlayer4").pause();
     }
+
+
+
+
+
+    
 </script>
 
 

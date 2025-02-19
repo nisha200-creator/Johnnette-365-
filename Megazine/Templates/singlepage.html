@@ -41,10 +41,11 @@ body{
  .news-detail {
     position: relative;
     margin-bottom: 20px;
-    background-color: white;
+    background-color: transparent;
     padding: 20px;
-    border: 1px solid #ddd;
+    
     margin-top: 15%;
+    color: white;
  }
 
  .news-detail img {
@@ -79,10 +80,7 @@ body{
     font-weight: bold;
  }
 
- .text-secondary {
-    color: #6c757d;
- }
-
+ 
 
  .badge {
     display: inline-block;
@@ -126,6 +124,29 @@ body{
  }
 
 
+ {% comment %} .video-background {
+   position: fixed;
+   top: 0;
+   left: 0;
+   width: 100%;
+   height: 100%;
+   z-index: -1;
+   overflow: hidden;
+}
+
+.video-background video {
+   min-width: 100%;
+   min-height: 100%;
+   object-fit: cover;
+}
+
+
+.news-detail {
+   position: relative;
+   background: rgba(93, 90, 90, 0.9);
+   padding: 20px;
+   border-radius: 10px;
+} {% endcomment %}
 
 
 </style>
@@ -137,36 +158,47 @@ body{
 
 
 <div class="container-fluid">
-    <div class="container">
-        <div class="row">
+    {% comment %} <div class="video-background">
+      <video autoplay muted loop playsinline>
+          <source src="{% static '/videos/video2.mp4' %}" type="video/mp4">
+          Your browser does not support the video tag.
+      </video>
+  </div>   {% endcomment %}
+   <div class="container">
+         <div class="row">
             <div class="col-lg-8">
-                <div class="news-detail">
-                    <img class="img-full" src="{% static '/img/para.jpg' %}">
-                    <div class="news-content">
+               <div class="news-detail">
+                     <img class="img-full" src="{% static '/img/para.jpg' %}">
+                     <div class="news-content">
                         <div class="news-meta">
-                            <a class="badge" href="">Technologies</a>
-                            <a class="text-body" href="">Updated at Jan 01, 2045</a>
+                          
+                              <a class="badge" href="">Technologies</a>
+                           <a class="text-body" href="">Updated at Jan 01, 2045</a>
                         </div>
-                        <h1 class="text-secondary text-uppercase font-bold">PARADIGM SHIFT IN MARITIME WARFARE BY...</h1>
+                        <hr>
+                        <h1 class="text-secondary text-uppercase font-bold" >PARADIGM SHIFT IN MARITIME WARFARE BY...</h1>
+                        
                         <h2>CDR. Anil Kumar Mehta (R)</h2>
-                        <h3>About the Author, <h4>Commander Anil Kumar Mehta (R) was commissioned in the Indian Navy on 01 Jul 1990. He is a qualified Gunnery Officer, Ships’ Diving Officer and UAV observer. He is presently an independent advisor in maritime warfare affairs.</h4> </h3>
-                        <p>The degree of maritime supremacy, where the opposing force is incapable of effective interference, will change with the role of Unmanned Combat Aerial Vehicles (UCAVs) as these become key components in conflicts. Worldwide, there will be many UCAVs customized for maritime applications for naval forces, adding another dimension in determining the outcome of battles amidst challenging technologies. Presently, maritime missions with UAVs (Unmanned Aerial Vehicles) are primarily focused on ISR (Intelligence,</p>
-                        <p>Surveillance, and Reconnaissance). Developing a stealthy long-range drone with a weapon payload that can go beyond and survive against modern air defenses is a challenge. However, UCAVs show promise in achieving these missions.Navies around the world have decided to adopt an Unmanned Carrier-Launched Surveillance and Strike (UCLASS) system. The UCLASS is being designed to provide Navy carriers with long-range surveillance and strike capabilities to target terrorists PARADIGM SHIFT IN MARITIME WARFAREBy CDR. Anil Kumar Mehta (R) Commander Anil Kumar Mehta (R) was commissioned in the Indian Navy on 01 Jul 1990. He is a qualified Gunnery Officer, Ships’ Diving Officer and UAV observer. He is presently an independent advisor in maritime warfare affairs.</p> <p> The degree of maritime supremacy, where the opposing force is incapable of effective interference, will change with the role of Unmanned Combat Aerial Vehicles (UCAVs) as these become key components in conflicts. Worldwide, there will be many UCAVs customized for maritime applications for naval forces, adding another dimension in determining the outcome of battles amidst challenging technologies. Presently, maritime missions with UAVs (Unmanned Aerial Vehicles) are primarily focused on ISR (Intelligence, Surveillance, and Reconnaissance). Developing a stealthy long-range drone with a weapon payload that can go beyond and survive against modern air defenses is a challenge. However, UCAVs show promise in achieving these missions.Navies around the world have decided to adopt an Unmanned Carrier-Launched Surveillance and Strike (UCLASS) system. The UCLASS is being designed to provide Navy carriers with long-range surveillance and strike capabilities to target terrorists (Anti-Piracy). UCAVs would be capable of rapid deployment from carriers that could stay out of the range of threats. A persistent surveillance capability that could also strike vital command & control and air defense sites if required could shift the paradigm of strategies/patterns/theories of Maritime Warfare</p>
+                        <hr>
+                        <h3>About the Author, <h4>Commander Anil Kumar Mehta (R) was commissioned in the Indian Navy on 01 Jul 1990. He is a      qualified Gunnery Officer, Ships’ Diving Officer and UAV observer. He is presently an independent advisor in maritime      warfare affairs.</h4> </h3>
+                        <hr>
+                        <p>The degree of maritime supremacy, where the opposing force is incapable of effective interference, will change with the      role of Unmanned Combat Aerial Vehicles (UCAVs) as these become key components in conflicts. Worldwide, there will be many      UCAVs customized for maritime applications for naval forces, adding another dimension in determining the outcome of      battles amidst challenging technologies. Presently, maritime missions with UAVs (Unmanned Aerial Vehicles) are primarily      focused on ISR (Intelligence,</p>
+                        <p>Surveillance, and Reconnaissance). Developing a stealthy long-range drone with a weapon payload that can go beyond and      survive against modern air defenses is a challenge. However, UCAVs show promise in achieving these missions.Navies around      the world have decided to adopt an Unmanned Carrier-Launched Surveillance and Strike (UCLASS) system. The UCLASS is being      designed to provide Navy carriers with long-range surveillance and strike capabilities to target terrorists PARADIGM SHIFT      IN MARITIME WARFAREBy CDR. Anil Kumar Mehta (R) Commander Anil Kumar Mehta (R) was commissioned in the Indian Navy on 01      Jul 1990. He is a qualified Gunnery Officer, Ships’ Diving Officer and UAV observer. He is presently an independent      advisor in maritime warfare affairs.</p> <p> The degree of maritime supremacy, where the opposing force is incapable of      effective interference, will change with the role of Unmanned Combat Aerial Vehicles (UCAVs) as these become key      components in conflicts. Worldwide, there will be many UCAVs customized for maritime applications for naval forces, adding      another dimension in determining the outcome of battles amidst challenging technologies. Presently, maritime missions with      UAVs (Unmanned Aerial Vehicles) are primarily focused on ISR (Intelligence, Surveillance, and Reconnaissance). Developing      a stealthy long-range drone with a weapon payload that can go beyond and survive against modern air defenses is a      challenge. However, UCAVs show promise in achieving these missions.Navies around the world have decided to adopt an      Unmanned Carrier-Launched Surveillance and Strike (UCLASS) system. The UCLASS is being designed to provide Navy carriers      with long-range surveillance and strike capabilities to target terrorists (Anti-Piracy). UCAVs would be capable of rapid      deployment from carriers that could stay out of the range of threats. A persistent surveillance capability that could also      strike vital command & control and air defense sites if required could shift the paradigm of strategies/patterns/theories      of Maritime Warfare</p>
                         <h3 class="text-uppercase font-bold">UAVs Maritime Missions</h3>
                         <img class="img-half float-left" src="{% static '/img/PARADIGM.jpg' %}">
-                        <p>In the present-day scenario, Unmanned Aerial Systems (UAS) are offering comprehensive maritime solutions that comply with every country's operational needs. There is a need to positively and unambiguously identify, in time, threats that originate in the maritime arena and prevent hostile and illegal activities in territorial waters or against areas within their range. Such activities may include illegal fishing, piracy, terror activities, and any other actions aimed against a country's sovereignty. These threats can be small or large targets with various radar cross-sections and thus require means with pinpoint detection and identification capabilities.</p>
-                        <p>Maritime UAV systems are providing Over The Horizon Targeting (OTHT) in security, paramilitary, and wartime missions. Maritime UAVs are being employed for real-time battle damage assessment. During peacetime, the maritime UAV system prevents the penetration of any seaborne hostile intruder, protects the country's rights and interests in the Economic Exclusive Zone (EEZ), and supports Search and Rescue operations. In wartime, the maritime UAV system achieves naval superiority, assists in the destruction of enemy naval forces, defends coastlines, and supports ground operations (littoral warfare). UAV systems are capable of carrying multiple payloads and sensors simultaneously and provide an array of intelligence-gathering capabilities from target detection to positive identification.UAVs with maritime capabilities enable total mission control from both land-based and sea-based locations. The control of UAVs can be transferred from land to sea and vice versa in</p> <p>real time. With SATCOM-controlled UAVs, the scanning area and time over target are increased, thus enhancing mission flexibility. UAVs with SATCOM control can play the role of a force multiplier to various vessels in any maritime theater with over-the-horizon ISR and target designation. Concepts of operation with maritime UAV systems will be prepared to support navy missions in war and peacetime. The role of the Maritime UAV system is to provide unmanned, long-endurance aerial reconnaissance, surveillance, and target acquisition. In addition, the UAV can create a comprehensive, real-time naval tactical picture for the ship's commander and naval headquarters. Aircraft equipped with a SATCOM dish can fly to a distance limited only by the fuel quantity carried on board and the SATCOM coverage.The unmanned helicopter configuration is available at a low price and can utilize existing platforms. The VTOL UAV systems will fulfill the missions of the manned naval helicopter, mainly in dull, dirty, and dangerous missions</p>
+                        <p>In the present-day scenario, Unmanned Aerial Systems (UAS) are offering comprehensive maritime solutions that comply      with every country's operational needs. There is a need to positively and unambiguously identify, in time, threats that      originate in the maritime arena and prevent hostile and illegal activities in territorial waters or against areas within      their range. Such activities may include illegal fishing, piracy, terror activities, and any other actions aimed against a      country's sovereignty. These threats can be small or large targets with various radar cross-sections and thus require      means with pinpoint detection and identification capabilities.</p>
+                        <p>Maritime UAV systems are providing Over The Horizon Targeting (OTHT) in security, paramilitary, and wartime missions.      Maritime UAVs are being employed for real-time battle damage assessment. During peacetime, the maritime UAV system      prevents the penetration of any seaborne hostile intruder, protects the country's rights and interests in the Economic      Exclusive Zone (EEZ), and supports Search and Rescue operations. In wartime, the maritime UAV system achieves naval      superiority, assists in the destruction of enemy naval forces, defends coastlines, and supports ground operations      (littoral warfare). UAV systems are capable of carrying multiple payloads and sensors simultaneously and provide an array      of intelligence-gathering capabilities from target detection to positive identification.UAVs with maritime capabilities      enable total mission control from both land-based and sea-based locations. The control of UAVs can be transferred from      land to sea and vice versa in</p> <p>real time. With SATCOM-controlled UAVs, the scanning area and time over target are      increased, thus enhancing mission flexibility. UAVs with SATCOM control can play the role of a force multiplier to various      vessels in any maritime theater with over-the-horizon ISR and target designation. Concepts of operation with maritime UAV      systems will be prepared to support navy missions in war and peacetime. The role of the Maritime UAV system is to provide      unmanned, long-endurance aerial reconnaissance, surveillance, and target acquisition. In addition, the UAV can create a      comprehensive, real-time naval tactical picture for the ship's commander and naval headquarters. Aircraft equipped with a      SATCOM dish can fly to a distance limited only by the fuel quantity carried on board and the SATCOM coverage.The unmanned      helicopter configuration is available at a low price and can utilize existing platforms. The VTOL UAV systems will fulfill      the missions of the manned naval helicopter, mainly in dull, dirty, and dangerous missions</p>
 
                         <h3 class="text-uppercase font-bold">Unmanned Combat Aerial Vehicle (UCAV)</h3>
                         <img class="img-half float-right" src="{% static '/img/PARADIGM.jpg' %}">
-                        <p>An Unmanned Combat Aerial Vehicle is a UAV that is armed and has no pilot onboard, commonly known as a “drone.” Drones have changed the nature of modern aerial combat. Controllers of drones are in no immediate danger, unlike jet pilots. In UCAVs, much of the equipment necessary for a human pilot (such as the cockpit, ejection seat, flight controls, and environmental controls) can be omitted, resulting in a decrease in weight. This allows for greater payload, range, and maneuverability</p><p>UCAVs are great force multipliers. In a network-centric environment where there is less response time between situational awareness, sensing, and destruction, the UCAV will be the most important weapon. UCAVs are capable of undertaking very high-risk or, typically, very high-attrition roles in which the use of manned aircraft is regarded as problematic. Current systems tend to be remotely 'piloted' by a ground controller, who is then also responsible for conducting any armed engagements. However, future concepts focus on UCAVs that can operate with higher degrees of autonomy, conducting missions with little controller influence following the input of mission information. The weapons employed from a UCAV are generally</p><p>conventional air-to-ground guided munitions. In the future, micro-munitions, Directed Energy Weapons, and weapons for air-to-air combat could be used by UCAVs.The vertical take-off and landing capabilities of UAVs are very suitable for maritime operations. Landing on helicopter deck-equipped ships without requiring launch and recovery equipment will be the future of UAV/UCAV operations. UAVs could either be programmed to fly an autonomous mission profile via a simple point-and-click graphical user interface or controlled manually. The vehicle is capable of carrying a variety of payloads depending on the mission. These include day and night thermal cameras (simultaneously), multi-spectral sensors, a synthetic aperture radar, a laser imaging radar, and a ground-penetrating radar</p>
+                        <p>An Unmanned Combat Aerial Vehicle is a UAV that is armed and has no pilot onboard, commonly known as a “drone.” Drones      have changed the nature of modern aerial combat. Controllers of drones are in no immediate danger, unlike jet pilots. In      UCAVs, much of the equipment necessary for a human pilot (such as the cockpit, ejection seat, flight controls, and      environmental controls) can be omitted, resulting in a decrease in weight. This allows for greater payload, range, and      maneuverability</p><p>UCAVs are great force multipliers. In a network-centric environment where there is less response      time between situational awareness, sensing, and destruction, the UCAV will be the most important weapon. UCAVs are      capable of undertaking very high-risk or, typically, very high-attrition roles in which the use of manned aircraft is      regarded as problematic. Current systems tend to be remotely 'piloted' by a ground controller, who is then also      responsible for conducting any armed engagements. However, future concepts focus on UCAVs that can operate with higher      degrees of autonomy, conducting missions with little controller influence following the input of mission information. The      weapons employed from a UCAV are generally</p><p>conventional air-to-ground guided munitions. In the future,      micro-munitions, Directed Energy Weapons, and weapons for air-to-air combat could be used by UCAVs.The vertical take-off      and landing capabilities of UAVs are very suitable for maritime operations. Landing on helicopter deck-equipped ships      without requiring launch and recovery equipment will be the future of UAV/UCAV operations. UAVs could either be programmed      to fly an autonomous mission profile via a simple point-and-click graphical user interface or controlled manually. The      vehicle is capable of carrying a variety of payloads depending on the mission. These include day and night thermal cameras      (simultaneously), multi-spectral sensors, a synthetic aperture radar, a laser imaging radar, and a ground-penetrating      radar</p>
                         <h3>Weapons for UAV</h3>
                         <p>Operational finesse can only be achieved by tuning these machines and equipment for our theater of operations. UCAVs are the machines of the future; thus, there is a need to reconfigure our doctrine and war-fighting capabilities to see how best these can be configured in the overall process. UCAVs should be capable of engaging air-to-air and air-to-surface targets. Types of weapons available worldwide that give precision, surprise, and lethality are appended below: (a) Loitering Missiles: These missiles are capable of achieving pinpoint accuracy. Loitering missiles are very effective for surgical strikes. They can be pre-programmed or controlled from the ground. (b) Laser Guided Bombs (LGBs): LGBs require high accuracy and a line of sight between the deployment platform and the target. Greater technological challenges will be to produce UCAVs that are stealthy and have high speed so that these UCAVs can shoot and scoot from the theater of operation.</p>(c) Air-to-Air Missiles: Self-protection missiles will be required for large advanced stealthy UCAVs when operating in high-risk environments as these are very high-value platforms. High-speed and agile UCAVs would be required to conduct air-to-air engagements. These UCAVs, operating with satellite data links, could be a good replacement for Combat Air Patrol (CAP) for 'Carrier Battle Groups.' (d) Air-to-Surface Missiles: Conventional air-to-ground missiles for ISR UAVs will be required for providing greater precision and more localized effects. These will be required for advanced stealthy UCAVs. Air-to-surface missiles will ensure survivability. Large UCAVs will have an edge over the enemy when fitted with new small agile expendable UCAVs. (e) Micro Munitions: This class of weapons will be required for smaller UCAVs that demand greater stealth and high speed. Micro munitions will be smaller and lighter than conventional missiles and can also be carried internally, improving the stealth characteristics of delivering platforms. These will have applications across all types of UCAVs. The range of these munitions may be limited, reducing their suitability for platforms that stand off from the targets.</div>
-                    </div>
-                </div>
+                     </div>
+               </div>
             </div>
-        </div>
-    </div>
+      </div>
+   </div>
 </div>
 
 
