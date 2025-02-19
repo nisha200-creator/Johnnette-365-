@@ -18,3 +18,5 @@ def about(request):
 
 def page(request):
     return render (request,'page.html')
+def page2(request):
+    return render (request,'page2.html')

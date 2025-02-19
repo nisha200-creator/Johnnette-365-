@@ -15,9 +15,11 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
         <style>
     
-/* body{
-    background-color:gray ;
-} */
+    body {
+    background-image: url("{% static 'images/back.jpg' %}");
+    }
+
+
 /* {% comment %} banner start {% endcomment %} */
 
 
@@ -31,6 +33,7 @@
     margin: 0 auto;
     margin-bottom: 15%;
     padding-top: 20%;
+    
 }
   
 
@@ -42,8 +45,7 @@
     margin-left: auto;
     padding-right: 15px;
     padding-left: 15px;
-   
-    margin-top: 20%;
+    
 }
 
 
@@ -52,6 +54,7 @@
     flex-wrap: wrap;
     margin-right: -15px;
     margin-left: -15px;
+    margin-top: 20%;
 }
 
 .col-lg-8 {
@@ -60,12 +63,80 @@
     padding-right: 15px;
     padding-left: 15px;
     flex: 0 0 66.666667%;
-    max-width: 66.666667%;
+    max-width: 800px;
+    margin: 0 auto;
+   
+
 }
+
+
+
+@media (max-width: 992px) {
+    .col-lg-8 {
+        padding: 10px;
+        box-shadow: none;
+    }
+    .smlhead h5, .share-container .smlbtn, .icons h5 {
+        font-size: 14px;
+    }
+    .icons i {
+        font-size: 18px;
+    }
+}
+
+
+@media (max-width: 768px) {
+    .col-lg-8 {
+        padding: 10px;
+    }
+    .form-row {
+        display: flex;
+        flex-direction: column;
+    }
+    .form-group {
+        width: 100%;
+    }
+    .input-field, .textarea-field {
+        width: 100%;
+        padding: 10px;
+        font-size: 14px;
+    }
+    .submit-btn {
+        width: 100%;
+        padding: 10px;
+        font-size: 16px;
+    }
+    .share-container {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .share-title {
+        margin-bottom: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .col-lg-8 {
+        padding: 5px;
+    }
+    h1 {
+        font-size: 24px;
+    }
+    .comment-btn {
+        font-size: 16px;
+    }
+    .smlhead h5 {
+        font-size: 12px;
+    }
+}
+
+
 .MAGAZINE-img {
     width: 100%;
     height: auto;
+    border-radius: 8px;
 }
+
 
 a {
     color: #ff5000;
@@ -99,12 +170,12 @@ p {
 /* {% comment %} comment start {% endcomment %} */
 
 
+
 .comment-img {
-    width: 45px;
-    height: 45px;
+    width: 100%;
+    max-width: 60px;
+    height: auto;
     border-radius: 50%;
-    margin-right: 10px;
-    float: left;
 }
 
 .comment-btn {
@@ -220,6 +291,16 @@ p {
 
 
 
+
+
+
+
+
+
+
+
+    
+
     /* trending item start */
 
 .Load-more {
@@ -286,6 +367,13 @@ p {
         color: #6c757d;
     }
 
+
+
+
+
+
+
+    
     .fullnewsletter {
         background-color: #fff;
         padding: 20px;
@@ -356,75 +444,74 @@ p {
   
     <!-- News With Sidebar Start -->
     <div class="container-fluid">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-8">
+        <div class="container ">
+            <div class="row" style="box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); padding: 15px;">
+                <div class="col-lg-8" style="box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); padding: 15px;">
                     <!-- News Detail Start -->
-                    <div style="box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); padding: 15px;">
+                    <div>
                         <a href="">Technologies</a>
-                        <h1>
-                            The double-edge sword of ARTIFICIAL INTELLIGENCE</h1>
+                        <h1>The double-edge sword of ARTIFICIAL INTELLIGENCE</h1>
                         <a href="">Jan 01, 2045</a>
-                        <img src="{% static '/img/ai.jpg' %}" class="MAGAZINE-img" alt="">
+                        <img src="{% static '/img/ai.jpg' %}" class="MAGAZINE-img" alt="" style="width: 100%; height: auto;">
                         <div>
-                            <p>Artificial Intelligence (AI) stands at the forefront of the Fourth Industrial Revolution, promising to revolutionize industries, enhance human capabilities, and tackle complex global challenges. From healthcare and finance to transportation and entertainment,</p>
-                            <p>AI's applications are vast and transformative. However, as with any powerful technology, AI is a double-edged sword, presenting both significant benefits and potential risks. This article delves into the multifaceted impact of AI, examining its advantages, the ethical dilemmas it poses, and the strategies necessary to navigate its side effects.</p>  <a href="">Read the full article</a>
+                            <p>Artificial Intelligence (AI) stands at the forefront of the Fourth Industrial Revolution, promising to revolutionize industries, enhance human capabilities, and tackle complex global challenges...</p>
+                            <a href="">Read the full article</a>
                         </div>
                     </div>
                     <br>
-                    <div class="smlhead" style="box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); padding: 15px;">
-                        <h5>Subscribe to our channels on <a href="">Telegram</a>  & <a href="">YouTube</a>. Follow us on <a href="">Twitter</a> and  <a href="">Facebook</a></h5>
+                    <div class="smlhead">
+                        <h5>Subscribe to our channels on <a href="">Telegram</a> & <a href="">YouTube</a>. Follow us on <a href="">Twitter</a> and <a href="">Facebook</a></h5>
                     </div>
-                    <div class="share-container " style="box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); padding: 15px;">
+                    <div class="share-container">
                         <div class="smlbtn">
-                            <small class="likeit">Like it ?</small>
-                            <a class="overlay" href="#"><span class="arrow-btn"> Support Us</span> </a>
+                            <small class="likeit">Like it?</small>
+                            <a class="overlay" href="#"><span class="arrow-btn"> Support Us</span></a>
                         </div>
                         <div class="icons">
                             <h5 class="share-title">Share:</h5>
                             <i class="fa-brands fa-facebook"></i>
                             <i class="fa-brands fa-twitter"></i>
                             <i class="fa-brands fa-square-instagram"></i>
-                        </div>    
+                        </div>
                     </div>
                     <!-- News Detail End -->
+                
                     <!-- Comment List Start -->
-                    <div style="box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); padding: 15px;">
+                    <div>
                         <h4 style="color: #ff5000; font-weight: bold;">1 Comment</h4>
                         <div>
+                            <img src="{% static '/img/Drone2.jpg' %}" alt="Image" class="comment-img" style="width: 100%; max-width: 60px; height: auto; border-radius: 50%;">
                             <div>
-                                <img src="{% static '/img/Drone2.jpg' %}" alt="Image" class="comment-img">
-                                <div>
-                                    <h6><a href="">John Doe</a> <small><i>01 Jan 2045</i></small></h6>
-                                    <p>Diam amet duo labore stet elitr invidunt ea clita ipsum voluptua, tempor labore accusam ipsum et no at. Kasd diam tempor rebum magna dolores sed sed eirmod ipsum.</p>
-                                    <h3 class="comment-btn">LEAVE A REPLY</h3>
-                                </div>
+                                <h6><a href="">John Doe</a> <small><i>01 Jan 2045</i></small></h6>
+                                <p>Diam amet duo labore stet elitr invidunt ea clita ipsum voluptua, tempor labore accusam ipsum et no at...</p>
+                                <h3 class="comment-btn">LEAVE A REPLY</h3>
                             </div>
                         </div>
                     </div>
                     <!-- Comment List End -->
+                
                     <!-- Comment Form Start -->
-                    <div style="box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); padding: 15px;">
+                    <div>
                         <h4 style="color: #ff5000; font-weight: bold;">Leave a comment</h4>
                         <div>
                             <form>
                                 <div class="form-row">
                                     <div class="form-group">
                                         <label for="message">Message *</label>
-                                        <textarea id="message" cols="30" rows="5" class="textarea-field"></textarea>
+                                        <textarea id="message" cols="30" rows="5" class="textarea-field" style="width: 100%;"></textarea>
                                     </div>
                                     <div class="form-group">
                                         <label for="name">Name *</label>
-                                        <input type="text" id="name" class="input-field">
+                                        <input type="text" id="name" class="input-field" style="width: 100%;">
                                     </div>
                                     <div class="form-group">
                                         <label for="email">Email *</label>
-                                        <input type="email" id="email" class="input-field">
+                                        <input type="email" id="email" class="input-field" style="width: 100%;">
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="website">Website</label>
-                                    <input type="url" id="website" class="input-field">
+                                    <input type="url" id="website" class="input-field" style="width: 100%;">
                                 </div>
                                 <div class="form-group">
                                     <input type="submit" value="Post comment" class="submit-btn"><br>
@@ -434,6 +521,7 @@ p {
                             </form>
                         </div>
                     </div>
+                    <!-- Comment Form End -->
                 </div>
 
 
