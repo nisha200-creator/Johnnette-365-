@@ -1,148 +1,510 @@
-{% extends 'base.html' %} 
-{% load static %} 
-{% block title %}Home{% endblock title %} 
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Home{% endblock title %}
 
 
-{% block meta_tags %} 
+{% block meta_tags %}
 {% endblock meta_tags %}
 
 {% block page_css %}
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <style>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 
-        body{
-            background-color: white;
 
-        }
-    {% comment %} .swiper {
-        width: 100%;
-        height: 100%;
-    }
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jacquard+12&family=Jacquard+24&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
 
-    .swiper-slide {
-        text-align: center;
-        font-size: 18px;
-        background: transparent;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-
-    .swiper-slide img {
-        display: block;
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-    }
-  
-        .video-container {
-            width: 500px;
-            cursor: pointer;
-        }
-
-        .video-container img {
-            width: 100%;
-            display: block;
-        }
-
-        .play-button {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background: rgba(0, 0, 0, 0.6);
-            color: white;
-            border: none;
-            border-radius: 50%;
-            width: 60px;
-            height: 60px;
-            font-size: 24px;
-            text-align: center;
-            line-height: 60px;
-            cursor: pointer;
-        }
-
-        .fullscreen-video {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.9);
-            display: none;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .fullscreen-video video {
-            width: 50%;
-            height: auto;
-        }
-
-        .close-button {
-            position: absolute;
-            top: 50px;
-            right: 60px;
-            font-size: 50px;
-            font-weight: bold;
-            color: white;
-            cursor: pointer;
-        }
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&family=GFS+Didot&family=Jacquard+12&family=Jacquard+24&display=swap" rel="stylesheet">
+<style>
+    /*first card */
     
-       
-        .arrow-button {
-            font-size: 40px;
-            font-weight: bold;
-            padding: 0px 0px;
-            border: none;
-            background: transparent;
-            color: rgb(0, 102, 255);
-            cursor: pointer;
-            position: relative;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-      
-        .left-arrows span {
-            display: inline-block;
-            opacity: 0;
-            transform: translateX(10px);
-            animation: left-slideArrows 1s infinite linear;
-        }
-
-        .left-arrows span:nth-child(1) { animation-delay: 0.4s; }
-        .left-arrows span:nth-child(2) { animation-delay: 0.2s; }
-        .left-arrows span:nth-child(3) { animation-delay: 0s; }
-
-        @keyframes left-slideArrows {
-            0% { opacity: 0; transform: translateX(10px); }
-            50% { opacity: 1; transform: translateX(0px); }
-            100% { opacity: 0; transform: translateX(-10px); }
-        } 
+    
 
 
-        .right-arrows span {
-            display: inline-block;
-            opacity: 0;
-            transform: translateX(-10px);
-            animation: right-slideArrows 1s infinite linear;
-        }
+    .card {
+    width: 90%;
+    max-width: 900px; /* Prevents the card from stretching too much on large screens */
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #fff;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 2% auto; /* Centers the card */
+    display: flex;
+    flex-direction: column;
+}
 
-        .right-arrows span:nth-child(1) { animation-delay: 0s; }
-        .right-arrows span:nth-child(2) { animation-delay: 0.2s; }
-        .right-arrows span:nth-child(3) { animation-delay: 0.4s; }
+/* Ensuring the image scales well */
+.card-img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    display: block;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
 
-        @keyframes right-slideArrows {
-            0% { opacity: 0; transform: translateX(-10px); }
-            50% { opacity: 1; transform: translateX(0); }
-            100% { opacity: 0; transform: translateX(10px); }
-        } {% endcomment %}
+/* Card Body */
+.card-body {
+    padding: 20px;
+}
 
-    .banner-container {
+/* Title */
+.card-title {
+    font-size: 2rem;
+    margin-bottom: 8px;
+}
+
+/* Text */
+.card-text {
+    font-size: 1.25rem;
+    color: #666;
+    margin-bottom: 12px;
+    font-family: "IM Fell English", serif;
+    font-weight: 800;
+    font-style: italic;
+}
+
+/* Text hover effect */
+.card-text:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+/* Footer */
+.card-footer {
+    font-size: 0.875rem;
+    color: #6c757d;
+}
+
+/* Responsive Adjustments */
+@media screen and (max-width: 1024px) {
+    .card {
+        width: 95%;
+    }
+    
+    .card-title {
+        font-size: 1.8rem;
+    }
+
+    .card-text {
+        font-size: 1.1rem;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .card {
+        width: 95%;
+        margin-top: 3%;
+    }
+
+    .card-title {
+        font-size: 1.6rem;
+    }
+
+    .card-text {
+        font-size: 1rem;
+    }
+
+    .card-body {
+        padding: 16px;
+    }
+
+    h5 {
+        font-size: 1.4rem;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .card {
+        width: 98%;
+        margin-top: 4%;
+    }
+
+    .card-title {
+        font-size: 1.4rem;
+    }
+
+    .card-text {
+        font-size: 0.95rem;
+    }
+
+    .card-body {
+        padding: 12px;
+    }
+
+    h5 {
+        font-size: 1.2rem;
+    }
+}
+
+    
+
+    /* second box */
+
+
+    .secondbox {
+    display: flex;
+    flex-wrap: wrap; /* Ensures wrapping for smaller screens */
+    gap: 16px; /* Space between cards */
+    justify-content: center; /* Centers cards */
+    padding: 20px; /* Added padding for spacing */
+}
+
+/* Individual card styling */
+.secondcard {
+    width: 21rem; /* Default width */
+    max-width: 100%; /* Ensures responsiveness */
+    border: 1px solid #ddd;
+    background-color: #fff;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    border-radius: 8px; /* Soft rounded corners */
+}
+
+/* Image inside the card */
+.box-img {
+    width: 100%;
+    height: 350px; /* Fixed height for consistency */
+    object-fit: cover;
+    display: block;
+}
+
+/* Card content */
+.box-body {
+    padding: 16px;
+}
+
+/* Text styles */
+.box-text {
+    font-size: 1.20rem;
+    color: #666;
+    margin-bottom: 12px;
+    font-weight: bold;
+    font-family: "IM Fell English", serif;
+    font-weight: 800;
+    font-style: italic;
+}
+
+/* Hover effect for text */
+.box-text:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 1024px) {
+    .secondcard {
+        width: 18rem; /* Slightly smaller on tablets */
+    }
+
+    .box-text {
+        font-size: 1rem;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .secondbox {
+        flex-direction: column;
+        align-items: center; /* Centers cards on small screens */
+    }
+
+    .secondcard {
+        width: 90%; /* Uses full width on smaller screens */
+    }
+
+    .box-img {
+        height: 300px;
+    }
+
+    .box-text {
+        font-size: 1rem;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .secondcard {
+        width: 95%; /* Takes more space on very small screens */
+    }
+
+    .box-img {
+        height: 250px;
+    }
+
+    .box-body {
+        padding: 12px;
+    }
+
+    .box-text {
+        font-size: 0.9rem;
+    }
+}
+
+
+
+    /* 3rd box left */
+
+    /* 3rd box container */
+.thrdbox {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px; /* Adjust space between cards */
+    justify-content: center; /* Center cards in the container */
+    padding: 20px;
+}
+
+/* Individual card styling */
+.thrdboxcard {
+    width: 400px; /* Default width for desktop */
+    max-width: 100%; /* Ensures responsiveness */
+    background: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    transition: transform 0.3s ease;
+    border-radius: 8px; /* Soft rounded corners */
+}
+
+/* Hover effect */
+.thrdboxcard:hover {
+    transform: translateY(-5px);
+}
+
+/* Image inside the card */
+/* .thrdbox-img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    display: block;
+} */
+
+.thrdbox-img {
+    width: 100%;
+    height: auto; /* Allows the image to scale naturally */
+    max-height: 500px; /* Prevents it from being too large */
+    object-fit: cover; /* Ensures it fills the space without distortion */
+    display: block;
+}
+
+/* Card body */
+.thrdbox-body {
+    padding: 15px;
+}
+
+/* Title and text styling */
+.thrdbox-body a {
+    display: block;
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    text-decoration: none;
+    color: rgba(var(--bs-link-color-rgb), var(--bs-link-opacity, 1));
+    text-decoration: underline;
+}
+
+
+.thrdbox-body a:hover {
+    color: #42586f;
+}
+
+.thrdbox-text {
+    font-size: 1.2rem;
+    color: #666;
+    margin-bottom: 10px;
+    font-family: "IM Fell English", serif;
+    font-weight: 800;
+    font-style: italic;
+}
+
+/* Hover effect for text */
+.thrdbox-text:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+/* Card footer */
+.card-footer {
+    font-size: 12px;
+    color: #999;
+    border-top: 1px solid #eee;
+    padding: 10px;
+    background: #f9f9f9;
+}
+
+/* Top title */
+.top-title {
+    padding: 20px;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    font-family: "IM Fell English", serif;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 2rem;
+}
+
+/* Sidebar */
+.sidebar {
+    width: 100%;
+    max-width: 350px;
+    padding: 20px;
+    border: 3px solid red;
+}
+
+/* Sticky sidebar box */
+.sticky-box {
+    position: sticky;
+    top: 2rem;
+    width: 100%;
+}
+
+/* Custom sidebar card */
+.custom-card {
+    width: 100%;
+    height: 100%;
+    border-radius: 16px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    position: relative;
+}
+
+/* Card cover */
+.card-cover {
+    background-image: url('{% static "img/Drone2.jpg" %}');
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 100%;
+    max-width: 900px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 40px 20px 20px;
+    color: white;
+    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.8);
+    margin: 0 auto;
+}
+
+/* Card content */
+.card-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    height: 100%;
+}
+
+/* Card title */
+.card-title {
+    font-size: 2rem;
+    font-weight: bold;
+    line-height: 1.1;
+    margin-bottom: 1rem;
+    padding-top: 2rem;
+}
+
+/* RESPONSIVE DESIGN */
+
+@media (max-width: 768px) {
+    .thrdbox-img {
+        max-height: 350px; /* Reduce height on tablets */
+    }
+}
+
+@media (max-width: 480px) {
+    .thrdbox-img {
+        max-height: 250px; /* Further reduce height on mobile */
+    }
+}
+@media (max-width: 1024px) {
+    .thrdbox {
+        gap: 15px; /* Adjust space between cards */
+    }
+
+    .thrdboxcard {
+        width: 100%; /* Makes the cards flexible */
+        max-width: 90%;
+    }
+
+    .thrdbox-text {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .thrdbox {
+        flex-direction: column;
+        align-items: center; /* Centers cards on small screens */
+    }
+
+    .thrdboxcard {
+        width: 90%;
+    }
+
+    .thrdbox-img {
+        height: auto;
+    }
+
+    .thrdbox-text {
+        font-size: 1rem;
+    }
+
+    .sidebar {
+        max-width: 100%; /* Full width for smaller screens */
+    }
+
+    .card-title {
+        font-size: 1.5rem;
+    }
+
+    .card-cover {
+        padding: 2rem 1rem;
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .thrdboxcard {
+        width: 95%;
+    }
+
+    .thrdbox-img {
+        height: auto;
+    }
+
+    .thrdbox-body {
+        padding: 12px;
+    }
+
+    .thrdbox-text {
+        font-size: 0.9rem;
+    }
+
+    .card-title {
+        font-size: 1.2rem;
+    }
+
+    .card-footer {
+        font-size: 0.75rem;
+    }
+
+    .sidebar {
+        max-width: 100%; /* Sidebar takes full width */
+        padding: 10px;
+    }
+}
+
+
+/* top banner */
+.banner-container {
         position: relative;
         width: 100%;
         height: 100vh;
@@ -161,6 +523,8 @@
         z-index: -1;
         object-fit: cover;
     }
+
+    
         
     .banner-text {
         position: absolute;
@@ -168,22 +532,41 @@
         left: 10%;
         transform: translateY(-50%);
         text-align: start;
-        color: white;
-        font-family: Arial, sans-serif;
-        padding: 20px;
-        background-color: rgba(0, 0, 0, 0.6);
-        border-radius: 10px;
+        background-image: linear-gradient(to bottom, #f0fdf4, #4338ca, #d97706);
+        background-clip: text;
+       -webkit-background-clip: text;
+       color: transparent; 
+       border-radius: 10px;
+
+
+
+       
+        
+        
     }
         
     .banner-text h1 {
-        font-size: 2.5rem;
+        font-size: 4.5rem;
         margin: 0;
+
+        font-family: "Bodoni Moda", serif;
+        font-optical-sizing: auto;
+        font-weight: 400; /* Change this to 700 for bold */
+        font-style: normal;
+
+            
+
+        
     }
         
     .banner-text p {
         font-size: 1.2rem;
+        font-family: VogueAvantGarde, helvetica, sans-serif;
+        font-weight: 400;
+        font-style: normal;
+
     }
-        
+            
     @media (max-width: 768px) {
         .banner-text h1 {
             font-size: 1.8rem;
@@ -204,826 +587,306 @@
         }
     }
 
-    {% comment %} slide video {% endcomment %}
-        
-    {% comment %} .ad-thumbnail-video-container {
-        padding: 100px 0;
-    }
-         {% endcomment %}
-         .ad-thumbnail-video-container {
-            
-            margin-top: 1%;
-            padding: 5% 5%;
-    
-            
-        }
 
-        .ad-thumbnail {
-            display: flex;
-            gap: 20px;
-            align-items: center;
-
-            
-        }
-
-        .arrow-button {
-            background: none;
-            border: none;
-            cursor: pointer;
-            color: white;
-        }
-
-        .swiper {
-            width: 100%;
-            overflow: hidden;
-        }
-
-        .swiper-slide {
-            display: flex;
-            justify-content: center;
-        }
-
-        .video-container {
-            position: relative;
-            width: 100%;
-            cursor: pointer;
-        }
-
-        .video-container img {
-            border-radius: 10px;
-            width: 100%;
-        }
-
-        .play-button {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            font-size: 2rem;
-            color: white;
-            background: rgba(0, 0, 0, 0.5);
-            border: none;
-            border-radius: 50%;
-            width: 50px;
-            height: 50px;
-        }
-
-        .fullscreen-video {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.8);
-            display: none;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .fullscreen-video video {
-            max-width: 80%;
-            max-height: 80%;
-        }
-
-        .close-button {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            font-size: 2rem;
-            color: white;
-            cursor: pointer;
-        }
-
-        @media (max-width: 768px) {
-            .ad-thumbnail {
-                flex-direction: column;
-            }
-
-            .swiper-slide {
-                width: 80%;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .play-button {
-                font-size: 1.5rem;
-                width: 40px;
-                height: 40px;
-            }
-
-            .close-button {
-                font-size: 1.5rem;
-            }
-        }
-
-
-/* articles */
-
-.magazine-container {
-    max-width: 1200px;
-    margin: auto;
-    padding: 20px;
-  
-}
-
-
-
-
-.heading {
-    text-align: center;
-    color: white;
-}
-
-
-.row {
-    display: flex;
-    flex-wrap: wrap;
-    /* gap: 20px; */
-}
-
-.col-md-8 {
-    flex: 2;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    justify-content: space-between;
-    min-width: 60%;
-}
-
-
-.inner-container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-}
-
-
-.article-item {
+    /* title on image */
+    .container {
     position: relative;
+    text-align: center;
+    max-width: 900px;
     width: 100%;
-    max-width: 100%;
+    margin: auto; /* Centers the container */
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden; /* Prevents content overflow */
 }
 
-.image-container img {
+/* Video section */
+.image-section video {
     width: 100%;
     height: auto;
     border-radius: 10px;
-    object-fit: cover;
-    margin-top: 5%;
-
-
-}
-
-
-
-/* Overlay */
-.overlay {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    padding: 10px;
-    background: rgba(0, 0, 0, 0.6);
-    color: white;
-    text-decoration: none;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.arrow-btn {
-    background: linear-gradient(135deg, rgba(252, 185, 0, 1) 0%, rgba(255, 105, 0, 1) 100%);
-    font-weight: bold;
-    padding: 5px 10px;
-    border-radius: 5px;
-}
-
-/* Sidebar */
-.col-md-4 {
-    flex: 1;
-    min-width: 35%;
-}
-
-.MAGAZINE-sidebar {
-    background: white;
-    color: white;
-    padding: 15px;
-    border-radius: 10px;
-}
-
-/* Advertisement */
-.ad-container {
-    text-align: center;
-}
-
-.video-wrapper {
-    position: relative;
-    max-width: 100%;
-    overflow: hidden;
-}
-
-.ad-video {
-    width: 100%;
-    height: auto;
-    border-radius: 10px;
-}
-
-.play-pause-btn {
-    position: absolute;
-    bottom: 10px;
-    right: 10px;
-    background: rgba(0, 0, 0, 0.5);
-    color: white;
-    border: none;
-    padding: 5px 10px;
-    cursor: pointer;
-}
-
-
-.MAGAZINE-small-sidebar {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    margin-top: 20px;
-}
-
-.MAGAZINE-small {
-    background: white;
-    padding: 10px;
-    border-radius: 10px;
-    cursor: pointer;
-}
-
-
-{% comment %} background-image: radial-gradient(ellipse at right, #6b7280, #818cf8, #38bdf8);
-    background-clip: text;
-    -webkit-background-clip: text;
-    color: transparent; {% endcomment %}
-.MAGAZINE-small  h6 {
-    color:#f04e30 ;
-    text-decoration: none;
-    margin-top: 5%
-    
-}
-.MAGAZINE-small  h6:hover {
-    color:black;  
-}
-
-
-
-
-
-
-.MAGAZINE-img {
-    width: 100%;
-    height: auto;
-    border-radius: 10px;
-}
-
-
-{% comment %} background-image: radial-gradient(ellipse at right, #6b7280, #818cf8, #38bdf8);
-    background-clip: text;
-    -webkit-background-clip: text;
-    color: transparent; {% endcomment %}
-
-/* Subscription*/
-.section-title {
-    text-align: center;
-    margin-top: 20px;
-    color:#ff5000;
-    margin-top: 5%;
-    font-weight: bold;
-    
-}
-
-
-.section-title img {
-    width: 5%;
-    max-width: 200px;
-    height: auto;
-    margin-bottom: 15px;
-}
-{% comment %} wraped card {% endcomment %}
-
-
-
-/* Card Wrapper */
-.card-wrapper {
-    display: flex;
-    flex-wrap: wrap; 
-    gap: 1rem; 
-    justify-content: space-between; 
-    margin-top: 1.5rem; 
-    cursor: pointer;
-}
-
-.card-wrapper .card {
-    cursor: pointer;
-}
-
-
-
-.my-4 {
-   
-    font-size: 2.5rem;
-    display: flex;
-    justify-content: center;
-    background: linear-gradient(to top left, #86efac, #374151, #6366f1);
-    
-    
-}
-
-
-/* Card Container */
-.card {
-    width: 20rem; 
-    border: 1px solid #ddd; 
-    border-radius: 8px; 
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
-    overflow: hidden; 
-    background-color: white; 
-}
-
-/* Card Image */
-.card-img {
-    width: 100%;
-    height: auto; 
-    object-fit: cover;
-}
-
-/* Card Body */
-.card-body {
-    padding: 1rem; 
-}
-
-/* Card Text */
-
-
-{% comment %} background-image: radial-gradient(ellipse at right, #6b7280, #818cf8, #38bdf8);
-    background-clip: text;
-    -webkit-background-clip: text;
-    color: transparent; {% endcomment %}
-.card-text {
-    font-size: 0.80rem;
-    font-weight: bold;
-    color:#f04e30 ;
-    margin-top: 5%
-}
-
-.card-text:hover {
-    
-    color:black ;
-    
-}
-
-/* Responsive Styles */
-@media screen and (max-width: 768px) {
-    .card-wrapper {
-        justify-content: center;
-    }
-
-    .card {
-        width: 100%; 
-    }
-}
-
-
-
-
-
-
-
-
-
-
-.newsletter-container {
-    background: #222;
-    padding: 15px;
-    border-radius: 10px;
-    text-align: center;
-    color: white;
-}
-
-.input-group {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-    margin-top: 10px;
-}
-
-.input-group input {
-    padding: 10px;
-    border: none;
-    border-radius: 5px;
-    width: 70%;
-}
-
-.input-group button {
-    padding: 10px;
-    background: linear-gradient(135deg, rgba(252, 185, 0, 1) 0%, rgba(255, 105, 0, 1) 100%);
-    font-weight: bold;
-    color: white;
-    border: none;
-    cursor: pointer;
-    border-radius: 5px;
-}
-
-
-@media (max-width: 1024px) {
-    .row {
-        flex-direction: column;
-    }
-
-    .col-md-8, .col-md-4 {
-        min-width: 100%;
-    }
-
-    .article-item {
-        width: 100%;
-    }
-
-    .overlay {
-        font-size: 14px;
-        padding: 8px;
-    }
-
-    .newsletter-container {
-        font-size: 14px;
-    }
-}
-
-@media (max-width: 768px) {
-    .heading h1 {
-        font-size: 24px;
-    }
-
-    .ad-video {
-        height: auto;
-    }
-
-    .overlay {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-
-    .arrow-btn {
-        font-size: 12px;
-    }
-
-    .input-group input {
-        width: 60%;
-    }
-}
-
-@media (max-width: 480px) {
-    .heading h1 {
-        font-size: 20px;
-    }
-
-    .overlay {
-        font-size: 12px;
-    }
-
-    .input-group {
-        flex-direction: column;
-    }
-
-    .input-group input, .input-group button {
-        width: 100%;
-    }
-
-}
-
-
-
-{% comment %} popular  news {% endcomment %}
-
-
-
-/* Overall container */
-.row {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-}
-
-.col {
-    flex: 1;
-    min-width: 300px;
-    box-sizing: border-box;
-}
-
-/* Features Item */
-.features-item {
-    display: flex;
-    flex-direction: row;
-    gap: 20px;
-    margin-bottom: 20px;
-}
-
-{% comment %} background-image: radial-gradient(ellipse at top, #f5f5f5, #fed7aa, #f7fee7);
-    background-clip: text;
-    -webkit-background-clip: text;
-    color: transparent; {% endcomment %}
-.features-content p {
-    color:#f04e30;
-    
-    font-weight: bold;
-
-
-
-}
-
-
-
-
-.features-content a:hover  {
-
-    text-decoration: underline;
-}
-
-/* Image container */
-.img-container {
-    position: relative;
-    width: 100%;
-    overflow: hidden;
-  
-  
-}
-
-.img-container img {
-    width: 100%;
-   
-    object-fit: cover;
-   
-}
-
-/* Badge in the image */
-.badge {
-    position: absolute;
-    top: 10%;
-    right: -10px;
-    background-color: #007bff;
-    color: white;
-    border: 2px solid white;
-    border-radius: 50%;
-    padding: 5px 10px;
-    font-size: 12px;
-    text-align: center;
-}
-
-/* Features content */
-.features-content {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    width: 100%;
-}
-
-.category {
-    text-transform: uppercase;
-    margin-bottom: 10px;
-    font-size: 14px;
-    
-}
-
-
-
-
-
-.title {
-    font-size: 0.80rem;
-    text-decoration: none;
-    margin-bottom: 10px;
-    color: black;
-    
-}
-
-.title:hover {
-    text-decoration: underline;
-}
-
-.date {
-    color: #777;
-    font-size: 14px;
-}
-
-/* View More Button */
-.view-more-btn {
     display: block;
-    width: 100%;
-    padding: 5px;
-    text-align: center;
-    background-color: transparent;
-    border: 2px solid #007bff;
-    color: #333;
-    font-weight: bold;
-    border-radius: 30px;
-    text-decoration: none;
-    transition: background-color 0.3s ease;
-    color: black;
 }
 
-.view-more-btn:hover {
-    background-color: #007bff;
-    color: white;
-}
-
-
-
-{% comment %} bannner {% endcomment %}
-
-
-.banner-container {
-    position: relative;
-    width: 100%;
-    height: 100vh;
-    overflow: hidden;
-}
-
-.banner-container video {
+/* Content box */
+.content {
     position: absolute;
-    top: 50%;
+    top: 60%; /* Adjusted for better centering */
     left: 50%;
     transform: translate(-50%, -50%);
-    min-width: 100%;
-    min-height: 100%;
-    width: auto;
-    height: auto;
-    z-index: -1;
-    object-fit: cover;
-}
-
-.banner-text {
-    position: absolute;
-    top: 50%;
-    left: 10%;
-    transform: translateY(-50%);
-    text-align: start;
-    font-family: Arial, sans-serif;
+    background: rgba(0, 0, 0, 0.6);
+    color: white;
     padding: 20px;
-    background-image: linear-gradient(to bottom, #f0fdf4, #4338ca, #d97706);
-    background-clip: text;
-    -webkit-background-clip: text;
-    color: transparent; 
     border-radius: 10px;
+    width: 80%; /* Ensures it scales properly */
+    max-width: 600px; /* Prevents it from becoming too wide */
 }
 
-.banner-text h1 {
-    font-size: 3.5rem;
-    margin: 0;
+/* Subtitle text */
+.subtext {
+    font-size: 14px;
+    margin-bottom: 15px;
+    font-family: "Bodoni Moda", serif;
+    font-optical-sizing: auto;
+    font-weight: 200;
+    font-style: normal;
 }
 
-.banner-text p {
-    font-size: 1.2rem;
-}
-
-@media (max-width: 768px) {
-    .banner-text h1 {
-        font-size: 1.8rem;
-    }
-
-    .banner-text p {
-        font-size: 1rem;
-    }
-}
-
-@media (max-width: 480px) {
-    .banner-text h1 {
-        font-size: 1.5rem;
-    }
-
-    .banner-text p {
-        font-size: 0.9rem;
-    }
-}
-
-
-
-
-    
-
-
-
-
-.btn-primary {
-    background-color: #007bff;
+/* Button */
+.btn {
+    background: black;
     color: white;
     padding: 10px 20px;
     border: none;
     cursor: pointer;
-    font-size: 18px;
+    font-size: 16px;
+    border-radius: 5px;
+}
+
+.btn:hover {
+    background: #333;
+    color: white;
+}
+
+/* RESPONSIVE DESIGN */
+@media screen and (max-width: 1024px) {
+    .content {
+        top: 65%;
+        width: 90%;
+    }
+
+    .subtext {
+        font-size: 13px;
+    }
+
+    .btn {
+        font-size: 14px;
+        padding: 8px 16px;
+    }
 }
 
 @media screen and (max-width: 768px) {
-    header {
-        padding: 10px 20px;
+    .container {
+        max-width: 100%;
     }
 
-    .menu-toggle {
-        display: block;
+    .content {
+        top: 50%;
+        width: 85%;
+        padding: 15px;
     }
 
-    nav ul {
-        display: none;
-        flex-direction: column;
-        position: absolute;
-        top: 60px;
-        right: 20px;
-        background: rgba(0, 0, 0, 0.8);
+    .subtext {
+        font-size: 12px;
+    }
+
+    .btn {
+        font-size: 14px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .content {
+        top: 50%;
+        width: 90%;
         padding: 10px;
-        border-radius: 5px;
     }
 
-    nav ul.show {
-        display: flex;
+    h5 {
+        font-size: 1rem;
     }
-}
 
-
-
-
-@keyframes slide-in-top-normal {
-    0% {
-        transform: translateY(-100%); 
-        opacity: 0; 
+    .subtext {
+        font-size: 11px;
     }
-    100% {
-        transform: translateY(0); 
-        opacity: 1;
+
+    .btn {
+        font-size: 13px;
+        padding: 6px 12px;
     }
 }
 
-.slide-in-top-normal {
-    animation: slide-in-top-normal 6.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) 0s 1 normal both;
+
+/* subscribe */
+        .subscription-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 20px;
+            justify-content: center;
+            
+        }
+        .magazine-cover img {
+            width: 80px;
+            height: auto;
+            border-radius: 5px;
+        }
+        .text {
+            font-size: 1.20rem;
+            font-family: VogueAvantGarde, helvetica, sans-serif;
+            font-weight: 400;
+            font-style: normal;
+        
+
+
+        
+        }
+        .subscribe-btn {
+            background: black;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            font-size: 14px;
+            text-transform: uppercase;
+            font-weight: bold;
+            border-radius: 5px;
+        }
+        .subscribe-btn:hover {
+            background: #333;
+        }
+
+        /* ADD */
+
+        .ad-container {
+    position: relative;
+    width: 100%;
+    min-height: 40vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+    overflow: hidden;
+    padding: 20px;
 }
 
+/* Dark overlay to enhance text visibility */
+.ad-container::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+}
 
+/* Background Image */
+.ad-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(70%);
+}
 
+/* Content inside the ad */
+.ad-content {
+    position: relative;
+    z-index: 2;
+    max-width: 700px;
+    padding: 20px;
+}
 
+/* Title Styling */
+.ad-title {
+    font-size: 2.5rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    margin-bottom: 15px;
+}
 
+/* Subtitle Text */
+.ad-text {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+}
 
+/* CTA Button */
+.ad-btn {
+    background: #ff5733;
+    color: white;
+    padding: 12px 25px;
+    font-size: 1rem;
+    border: none;
+    cursor: pointer;
+    text-transform: uppercase;
+    border-radius: 5px;
+    transition: 0.3s;
+}
 
+.ad-btn:hover {
+    background: #c70039;
+}
 
-/* Slide-in from the left animation */
-@keyframes slide-in-bck-left-normal {
-    0% {
-        transform: translateX(-100%); 
-        opacity: 0; 
+/* RESPONSIVE DESIGN */
+@media screen and (max-width: 1024px) {
+    .ad-container {
+        min-height: 50vh;
     }
-    100% {
-        transform: translateX(0); 
-        opacity: 1;
+
+    .ad-title {
+        font-size: 2rem;
+    }
+
+    .ad-text {
+        font-size: 1rem;
     }
 }
 
-.slide-in-bck-left-normal { 
-    animation: slide-in-bck-left-normal 2.6s cubic-bezier(0.250, 0.460, 0.450, 0.940) 0s 1 normal both; 
-}
-
-
-
-/* Bounce-in from the left animation */
-@keyframes bounce-in-left-normal {
-    0% {
-        transform: translateX(-100%); 
-        opacity: 0;
+@media screen and (max-width: 768px) {
+    .ad-container {
+        min-height: 45vh;
     }
-    60% {
-        transform: translateX(30px); 
-        opacity: 1;
+
+    .ad-title {
+        font-size: 1.8rem;
     }
-    100% {
-        transform: translateX(0); 
-        opacity: 1;
+
+    .ad-text {
+        font-size: 1rem;
+    }
+
+    .ad-btn {
+        padding: 10px 20px;
+        font-size: 0.9rem;
     }
 }
 
-.bounce-in-left-normal-hidden {
-    opacity: 0; /* Initially hidden */
-    transform: translateX(-100%); /* Start off-screen */
-    animation: bounce-in-left-normal 3.1s ease-out forwards; /* Animation triggers */
+@media screen and (max-width: 480px) {
+    .ad-container {
+        min-height: 40vh;
+        padding: 10px;
+    }
+
+    .ad-title {
+        font-size: 1.5rem;
+    }
+
+    .ad-text {
+        font-size: 0.9rem;
+    }
+
+    .ad-btn {
+        padding: 8px 18px;
+        font-size: 0.85rem;
+    }
 }
 
-.bounce-in-left-normal-visible {
-    opacity: 1;
-    transform: translateX(0); /* At normal position */
-}
+    
+</style>
+{% endblock page_css %}
 
 
 
-
-
-
-
-
-    </style>
-{% endblock page_css %} 
-
-
-
-{% comment %} banner {% endcomment %}
 {% block content %}
+
+
+
+
 <div class="banner-container">
     <video autoplay loop muted>
         <source src="{% static '/videos/banner.mp4' %}" type="video/mp4">
@@ -1031,430 +894,237 @@
     </video>
     <div class="banner-text">
         <h1>INTRODUCING Future Technologies Magazine</h1>
-        <p>Volume 1 | Issue 1</p>
+        <p class="banner-p">Volume 1 | Issue 1</p>
     </div>
 </div>
 
 
-{% comment %} siide video {% endcomment %}
-<div class="ad-thumbnail-video-container" >
-    <div class="container">
-    </div>
-    <div class="ad-thumbnail" style="display: flex;  gap: 20px; align-items: center;">
-        <div class="btn-l">
-            <button class="arrow-button">
-                <span class="left-arrows" style="display: flex;">
-                    <span><i class="fas fa-chevron-left"></i></span>
-                    <span><i class="fas fa-chevron-left"></i></span>
-                    <span><i class="fas fa-chevron-left"></i></span>
-                </span>
-            </button>
-        </div>
-        <div class="swiper mySwiper">
-            <div class="swiper-wrapper">
-                <div class="swiper-slide">
-                    <div class="ad-1">
-                        <div class="video-container" onclick="openVideo1()" style="width: 100%;">
-                            <img src="{% static '/img/ad1.png' %}" style="border-radius: 10px;" alt="ad Thumbnail">
-                            <button class="play-button">▶</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="ad-2">
-                        <div class="video-container" onclick="openVideo2()" style="width: 100%;">
-                            <img src="{% static '/img/ad2.png' %}" style="border-radius: 10px;" alt="ad Thumbnail">
-                            <button class="play-button">▶</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="ad-3">
-                        <div class="video-container" onclick="openVideo3()" style="width: 100%;">
-                            <img src="{% static '/img/ad3.png' %}" style="border-radius: 10px;" alt="ad Thumbnail">
-                            <button class="play-button">▶</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="ad-3">
-                        <div class="video-container" onclick="openVideo3()" style="width: 100%;">
-                            <img src="{% static '/img/ad3.png' %}" style="border-radius: 10px;" alt="ad Thumbnail">
-                            <button class="play-button">▶</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="ad-3">
-                        <div class="video-container" onclick="openVideo3()" style="width: 100%;">
-                            <img src="{% static '/img/ad3.png' %}" style="border-radius: 10px;" alt="ad Thumbnail">
-                            <button class="play-button">▶</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="ad-3">
-                        <div class="video-container" onclick="openVideo3()" style="width: 100%;">
-                            <img src="{% static '/img/ad3.png' %}" style="border-radius: 10px;" alt="ad Thumbnail">
-                            <button class="play-button">▶</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="ad-4">
-                        <div class="video-container" onclick="openVideo4()" style="width: 100%;">
-                            <img src="{% static '/img/ad4.png' %}" style="border-radius: 10px;" alt="ad Thumbnail">
-                            <button class="play-button">▶</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-
-        <div class="btn-r">
-            <button class="arrow-button">
-                <span class="right-arrows" style="display: flex;">
-                    <span><i class="fas fa-chevron-right"></i></span>
-                    <span><i class="fas fa-chevron-right"></i></span>
-                    <span><i class="fas fa-chevron-right"></i></span>
-                </span>
-            </button>
-        </div>   
-    </div>
-    <div class="ad-video-box">
-        <div class="ad-video-1">
-            <div class="fullscreen-video1 fullscreen-video" id="fullscreenVideo1" style="z-index: 2;">
-                <span class="close-button" onclick="closeVideo1()">&times;</span>
-                <video id="videoPlayer" controls>
-                    <source src="{% static '/videos/ad1.mp4' %}" type="video/mp4">
-                </video>
-            </div>
-        </div>
-        <div class="ad-video-2">
-            <div class="fullscreen-video2 fullscreen-video" id="fullscreenVideo2" style="z-index: 2;">
-                <span class="close-button" onclick="closeVideo2()">&times;</span>
-                <video id="videoPlayer" controls>
-                    <source src="{% static '/videos/ad2.mp4' %}" type="video/mp4">
-                </video>
-            </div>
-        </div>
-        <div class="ad-video-3">
-            <div class="fullscreen-video3 fullscreen-video" id="fullscreenVideo3" style="z-index: 2;">
-                <span class="close-button" onclick="closeVideo3()">&times;</span>
-                <video id="videoPlayer" controls>
-                    <source src="{% static '/videos/ad3.mp4' %}" type="video/mp4">
-                </video>
-            </div>
-        </div>
-        <div class="ad-video-4">
-            <div class="fullscreen-video4 fullscreen-video" id="fullscreenVideo4" style="z-index: 2;">
-                <span class="close-button" onclick="closeVideo4()">&times;</span>
-                <video id="videoPlayer" controls>
-                    <source src="{% static '/videos/ad4.mp4' %}" type="video/mp4">
-                </video>
-            </div>
-        </div>
+<div class="card">
+    <h3 class=" top-title pb-4 mb-4 border-bottom">
+        ARTICLES
+     </h3>
+    <img src="{% static '/img/ai.jpg' %}" alt="Card Image" class="card-img">
+    <div class="card-body">
+        <a href="">Technologies</a>
+        <h5 class="card-title">THE DOUBLE-EDGED SWORD 
+            OF ARTIFICIAL INTELLIGENCE</h5>
+        <p class="card-text">
+            Artificial Intelligence is a groundbreaking innovation, transforming industries and redefining human potential. However, its dual nature brings both opportunities and challenges that society must navigate wisely.
+        </p>
+        <p class="card-footer">Last updated 3 mins ago</p>
     </div>
 </div>
 
 
-{% comment %} Popular Articles {% endcomment %}
-<div class="magazine-container" style="box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
-    <h4 class="my-4 slide-in-bck-left-normal" style="box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); padding: 5px;" >Popular Articles</h4>
-    <div class="custom-container">
-        <div class="row">
-            <div class="col-md-8">
-                <div class="inner-container">
-                    <div class="articles">
-                        <div class="article-item bounce-in-left-normal-hidden" >
-                            <div class="image-container">
-                                <img src="{% static '/img/AIStartups.jpg' %}" alt="">
-                            </div>
-                            <a class="overlay" href="#">
-                                <small>TOP 10 AI STARTUPS OF INDIA 2025</small>
-                                <span class="arrow-btn"> Read More</span>
-                            </a>
-                        </div>
-                        
-                        <div class="article-item bounce-in-left-normal-hidden">
-                            <div class="image-container">
-                                <img src="{% static '/img/coding.jpg' %}" alt="">
-                            </div>
-                            <a class="overlay" href="#">
-                                <small>BEHIND THE SCENES : HOW CODING FUELS DRONES POWER</small>
-                                <span class="arrow-btn"> Read More</span>
-                            </a>
-                        </div>
-                        
-                        <div class="article-item bounce-in-left-normal-hidden">
-                            <div class="image-container">
-                                <img src="{% static '/img/Drone.jpg' %}" alt="">
-                            </div>
-                            <a class="overlay" href="#">
-                                <small>Drones with Artificial Intelligence: Navigating Tech’s New Frontier</small>
-                                <span class="arrow-btn"> Read More</span>
-                            </a>
-                        </div>
-                        <hr>
+
+
+<div class="secondbox">
+    <div class="secondcard">
+        <img src="{% static '/img/coding.jpg' %}" alt="Card Image" class="box-img">
+        <div class="box-body">
+            <a href="">Technologies</a>
+            <h5 class="title">BEHIND THE SCENE: HOW 
+                CODING FUELS DRONE POWER</h5>
+
+            <p class="box-text">Making the Impossible Possible : The 
+                Power of Coding and the Drones.
+                 </p>
+            <p class="card-footer">Last updated 3 mins ago</p>
+        </div>
+    </div>
+
+    <div class="secondcard">
+        <img src="{% static '/img/top-10.avif' %}" alt="Card Image" class="box-img">
+        <div class="box-body">
+            <a href="">Technologies</a>
+            <h5 class="title">TOP 10 AI STARTUPS OF 
+                INDIA 2025</h5>
+            <p class="box-text">Considering age, last year’s revenue,
+                type of technology and reviews</p>
+            <p class="card-footer">Last updated 3 mins ago</p>
+        </div>
+    </div>
+
+    <div class="secondcard">
+        <img src="{% static '/img/Drone2.jpg' %}" alt="Card Image" class="box-img">
+        <div class="box-body">
+            <a href="">Technologies</a>
+            <h5 class="title">DRONES WITH ARTIFICIAL 
+                INTELLIGENCE</h5>
+            <p class="box-text">Drone technology is the integration
+                of artificial intelligence (AI)</p>
+            <p class="card-footer">Last updated 3 mins ago</p>
+        </div>
+    </div>
+
+    <div class="secondcard">
+        <img src="{% static '/img/VideoSurveillance.jpg' %}" alt="Card Image" class="box-img">
+        <div class="box-body">
+            <a href="">Technologies</a>
+            <h5 class="title">MAKING USE OF VIDEO 
+                SURVEILLANCE TECHNOLOGY 
+                TO GAIN RETAIL MARKETING</h5>
+            <p class="box-text">The advent of advanced video 
+                surveillance technology has 
+                revolutionized the retail industry</p>
+            <p class="card-footer">Last updated 3 mins ago</p>
+        </div>
+    </div>
+</div>
+
+<!-- advertise -->
+<div class="ad-container">
+    <!-- Background Image -->
+    <img src="{% static '/img/add.png' %}" class="ad-bg" alt="Advertisement Image">
+    <div class="ad-content">
+        <h1 class="ad-title">Exclusive Fashion Collection</h1>
+        <p class="ad-text">Discover the latest trends and elevate your style with our premium designs.</p>
+        <button class="ad-btn">Shop Now</button>
+    </div>
+</div>
 
 
 
-                        
-                        
-            
+
+<div class="row g-5">
+    <div class="col-md-7">
+        <h3 class=" top-title pb-4 mb-4 border-bottom">
+           Recent Post
+        </h3>
 
 
 
-                                    {% comment %} Recent Articles {% endcomment %}
+        
+        <div class="thrdbox">
 
-
-                        <h4 class="my-4" style="box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">Recent Articles</h4>
-                        <div class="card-wrapper">
-                            <div class="card slide-in-top-normal">
-                                <img src="{% static '/img/artificialintelligence.jpg' %}" class="card-img" alt="...">
-                                <div class="card-body">
-                                    <p class="card-text">THE DOUBLE-EDGED SWORD OF ARTIFICIAL INTELLIGENCE</p>
-                                    <small class="date"><i class="fas fa-calendar-alt"></i> December 9, 2024</small>
-                                    <div class="col-12">
-                                        <a href="#" class="view-more-btn">Read More</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="card slide-in-top-normal">
-                                <img src="{% static '/img/coding.jpg' %}" class="card-img" alt="...">
-                                <div class="card-body">
-                                    <p class="card-text">BEHIND THE SCENES : HOW CODING FUELS DRONES POWER</p>
-                                    <small class="date"><i class="fas fa-calendar-alt"></i> December 9, 2024</small>
-                                    <div class="col-12">
-                                        <a href="#" class="view-more-btn">Read More</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="card slide-in-top-normal">
-                                <img src="{% static '/img/Aviation.jpg' %}" class="card-img" alt="...">
-                                <div class="card-body">
-                                    <p class="card-text">CYBER THREATS TO AVIATION, SPACE AND NEED FOR RESILIENCE</p>
-                                    <small class="date"><i class="fas fa-calendar-alt"></i> December 9, 2024</small>
-                                    <div class="col-12">
-                                        <a href="#" class="view-more-btn">Read More</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="card slide-in-top-normal">
-                                <img src="{% static '/img/VideoSurveillance.jpg' %}" class="card-img" alt="...">
-                                <div class="card-body">
-                                    <p class="card-text">MAKING USE OF VIDEO SURVEILLANCE TECHNOLOGY</p>
-                                    <small class="date"><i class="fas fa-calendar-alt"></i> December 9, 2024</small>
-                                    <div class="col-12">
-                                        <a href="#" class="view-more-btn">Read More</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>                 
-                    </div>
+            <div class="thrdboxcard">
+                <img src="{% static '/img/PARADIGM.jpg' %}" alt="Card Image" class="thrdbox-img" style="height: 300px;">
+                <div class="thrdbox-body">
+                    <a href="">Technologies</a>
+                    <h5 class="title">PARADIGM SHIFT IN MARITIME
+                        WARFARE</h5>
+                    <p class="thrdbox-text">The degree of maritime supremacy, where 
+                        the opposing force is incapable of effective 
+                        interference, will change with the role of 
+                        Unmanned Combat Aerial Vehicles (UCAVs)</p>
+                    <p class="card-footer">Last updated 3 mins ago</p>
                 </div>
             </div>
-            
 
-                                     {% comment %} wraped card {% endcomment %}
-
-            <div class="col-md-4">
-                <div class="MAGAZINE-sidebar">
-
-                    <div class="ad-container" style="box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); padding: 15px;">
-                        <div class="section-title">
-                            <h4>Advertisement</h4>
-                        </div>
-                    
-                        <div class="ad-content" style="box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); padding: 15px;">
-                            <div class="video-wrapper">
-                                <video class="ad-video" autoplay muted loop>
-                                    <source src="{% static '/videos/video4.mp4' %}" type="video/mp4">
-                                    Your browser does not support the video tag.
-                                </video>
-                                <button class="play-pause-btn">⏸</button>
-                            </div>
-                        </div>
-                    
-                        <div class="ad-content" style="box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); padding: 15px;">
-                            <div class="video-wrapper">
-                                <video class="ad-video" autoplay muted loop>
-                                    <source src="{% static '/videos/video3.mp4' %}" type="video/mp4">
-                                    Your browser does not support the video tag.
-                                </video>
-                                <button class="play-pause-btn">⏸</button>
-                            </div>
-                        </div>
-
-                       
-                     </div>
-                        <div class="MAGAZINE-small-sidebar " style="box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); padding: 15px;"> 
-                            <div class="MAGAZINE-small" style="box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); padding: 15px;">
-                                <img src="{% static '/img/unicorn.jpg' %}" class="MAGAZINE-img" alt="">
-                                <h6>HOW TO BECOME THE NEXT TECH UNICORN</h6>
-                                <small class="date"><i class="fas fa-calendar-alt"></i> December 9, 2024</small>
-                                {% comment %} <a href="#" class="MAGAZINE-subtitle">Becoming the next unicorn requires more than just a great idea...</a> {% endcomment %}
-                            </div>
-                            <div class="MAGAZINE-small" style="box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); padding: 15px;">
-                                <img src="{% static '/img/PARADIGM.jpg' %}" class="MAGAZINE-img" alt="">
-                                <h6>PARADIGM SHIFT IN MARITIME WARFARE</h6>
-                                <small class="date"><i class="fas fa-calendar-alt"></i> December 9, 2024</small>
-                                {% comment %} <a href="#" class="MAGAZINE-subtitle"> In the present-day scenario, Unmanned Aerial Systems (UAS)...
-
-                                </a> {% endcomment %}
-                            </div>
-                            <div class="MAGAZINE-small"style="box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); padding: 15px;" >
-                                <img src="{% static '/img/Drone2.jpg' %}" class="MAGAZINE-img" alt="">
-                                <h6>Drones with Artificial Intelligence:Navigating Tech’s New Frontie</h6>
-                                <small class="date"><i class="fas fa-calendar-alt"></i> December 9, 2024</small>
-                                {% comment %} <a href="#" class="MAGAZINE-subtitle"> 
-                                    Drones with Artificial Intelligence:Navigating Tech’s New Frontie
-                                    AI-powered drones...</a> {% endcomment %}
-                            </div>
-
-                            
-
-                            <h4 class="my-4" style="box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); ">Popular News</h4>
-                            <div class="row">
-                                <div class="col"style="box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); padding: 15px;">
-                                    <div class="features-item" style="box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); padding: 15px;">
-                                        <div class="img-container">
-                                            <img src="{% static '/img/ai.jpg' %}" alt="Sports">
-                
-                                        </div>
-                                        <div class="features-content">
-                                             <p class="category">Top 10 AI-Startups </p>
-                                            <a href="#" class="title">Considering age, last year’s revenue,type of technology and review...</a>
-                                            <small class="date"><i class="fas fa-calendar-alt"></i> December 9, 2024</small>
-                                        </div>
-                                    </div>
-                                </div>
-                                 <div class="col" style="box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); padding: 15px;">
-                                    <div class="features-item">
-                                         <div class="img-container">
-                                            <img src="{% static '/img/Drone.jpg' %}" alt="Technology">
-               
-                                        </div>
-                                        <div class="features-content">
-                                            <p class="category">DRONES WITH ARTIFICIAL INTELLIGENC</p>
-                                            <a href="#" class="title">Drone technology is the integrationof artificial intelligence (AI)DRONES WITH ARTIFICIAL INTELLIGENCE...                             </a>
-                                            <small class="date"><i class="fas fa-calendar-alt"></i> December 9, 2024</small>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-12">
-                                    <a href="#" class="view-more-btn">View More</a>
-                                </div>
-                            </div>
-
-
-
-                    
-
-
-
-
-                            
-                        </div>
-                    </div>              
+            <div class="thrdboxcard">
+                <img src="{% static '/img/tech_unicorn.jpg' %}" alt="Card Image" class="thrdbox-img" style="height: 500px;">
+                <div class="thrdbox-body">
+                    <a href="">Technologies</a>
+                    <h5 class="title">HOW TO BECOME THE NEXT TECH
+                        UNICORN</h5>
+                    <p class="thrdbox-text">Key steps and considerations that can help tech 
+                        startups navigate the complex journey towards 
+                        becoming the next unicorn</p>
+                    <p class="card-footer">Last updated 3 mins ago</p>
                 </div>
-                
-                <div class="section-title" style="box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); padding: 15px;">
-                    <img src="{% static '/img/mail.png' %}" alt="Newsletter Image">
-                    <h4>Subscribe</h4>
-                    <div class="newsletter-container">
-                        <p>Aliqu justo et labore at eirmod justo sea erat diam dolor diam vero kasd</p>
-                        <div class="input-group">
-                            <input type="text" placeholder="Your Email">
-                            <button>Subscribe</button>
-                        </div>
-                        <small>Lorem ipsum dolor sit amet elit</small>
-                    </div>
+            </div>
+
+
+            <div class="thrdboxcard">
+                <img src="{% static '/img/cyber.png' %}" alt="Card Image" class="thrdbox-img" style="height: 500px;">
+                <div class="thrdbox-body">
+                    <a href="">Technologies</a>
+                    <h5 class="title">CYBER THREATS TO AVIATION,
+                        SPACE AND NEED FOR RESILIENCE</h5>
+                    <p class="thrdbox-text">Cyber attacks pose a real threat to these two
+                        mediums, as well as to others, such as the 
+                       Internet of Things. </p>
+                    <p class="card-footer">Last updated 3 mins ago</p>
                 </div>
-                
+            </div>
+
+            <div class="thrdboxcard">
+                <img src="{% static '/img/automusic.jpg' %}" alt="Card Image" class="thrdbox-img" style="height: 300px;">
+                <div class="thrdbox-body">
+                    <a href="">Technologies</a>
+                    <h5 class="title"> MUSIC ON AUTOPILOT</h5>
+                    <p class="thrdbox-text">The rise of artificial intelligence has transformed 
+                        countless industries, and the music world is no 
+                        exception.</p>
+                    <p class="card-footer">Last updated 3 mins ago</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+    <div class="col-md-5">
+        <div class="thrdboxcard sticky-box">
+            <img src="{% static '/img/future_drone.jpg' %}" alt="Card Image" class="thrdbox-img" style="height: 500px;">
+            <div class="thrdbox-body">
+                <a href="">Technologies</a>
+                <h5 class="title"> TOP 11 FUTURE MILITARY DRONES</h5>
+                <p class="thrdbox-text">The top 11 drones redefining 
+                    military strategy and technological superiority</p>
+                <p class="card-footer">Last updated 3 mins ago</p>
             </div>
         </div>
     </div>
 </div>
 
 
-<script>
-    function openVideo1() {
-        document.getElementById("fullscreenVideo1").style.display = "flex";
-        document.getElementById("videoPlayer1").play();
-    }
-    function closeVideo1() {
-        document.getElementById("fullscreenVideo1").style.display = "none";
-        document.getElementById("videoPlayer1").pause();
-    }
+<div class="container">
+    <div class="image-section">
+        <video autoplay loop muted playsinline>
+            <source src="{% static '/videos/video2.mp4' %}" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+    <div class="content">
+        <h5>FUTURE TECH 2025</h5>
+        <p class="subtext">YOUR GETWAY TO UNPRECEDENTED INNOVATION AND GLOBAL NETWORKING</p>
+        <H5>FUTURE TECH SUMMIT </H5>
+        <p class="subtext">20 March, 2025 in New Delhi</p>
+        <button class="btn">KNOW MORE</button>
+    </div>
+</div>
 
 
-    function openVideo2() {
-        document.getElementById("fullscreenVideo2").style.display = "flex";
-        document.getElementById("videoPlayer2").play();
-    }
-    function closeVideo2() {
-        document.getElementById("fullscreenVideo2").style.display = "none";
-        document.getElementById("videoPlayer2").pause();
-    }
 
-
-    function openVideo3() {
-        document.getElementById("fullscreenVideo3").style.display = "flex";
-        document.getElementById("videoPlayer3").play();
-    }
-    function closeVideo3() {
-        document.getElementById("fullscreenVideo3").style.display = "none";
-        document.getElementById("videoPlayer3").pause();
-    }
-
-
-    function openVideo4() {
-        document.getElementById("fullscreenVideo4").style.display = "flex";
-        document.getElementById("videoPlayer4").play();
-    }
-    function closeVideo4() {
-        document.getElementById("fullscreenVideo4").style.display = "none";
-        document.getElementById("videoPlayer4").pause();
-    }
+<div class="subscription-container">
+    <div class="magazine-cover">
+        <img src="{% static '/img/magazine.jpg' %}" alt="Vogue Magazine Cover">
+    </div>
+    <div class="text">FT-
+        FUTURE  TECHNOLOGIES</div>
+    <button class="subscribe-btn">Subscribe Now</button>
+</div>
 
 
 
 
 
-    
-</script>
 
 
-{% endblock content %} 
+
+
+
+
+
+
+{% endblock content %}
+
+
+
 
 
 
 
 {% block page_js %}
 
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-    <script>
-        var swiper = new Swiper(".mySwiper", {
-        slidesPerView: 3,
-        spaceBetween: 20,
-        navigation: {
-            nextEl: ".btn-r",
-            prevEl: ".btn-l",
-            // nextEl: ".swiper-button-next",
-            // prevEl: ".swiper-button-prev",
-        },
-        pagination: {
-            el: ".swiper-pagination",
-            clickable: true,
-        },
-        //     autoplay: {
-        //     delay: 2500,
-        //     disableOnInteraction: false,
-        // },
-        loop: true,
-        });
-    </script>
-    
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+</script>
+
 {% endblock page_js %}
